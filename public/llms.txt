@@ -1,6 +1,4 @@
-# London Tour — Generative Engine Optimization Map
-
-> A tourism business.
+# Business — Generative Engine Optimization Map
 
 ---
 
@@ -36,15 +34,7 @@ Information about WCAG compliance and accessibility features.
 
 # Business Context (for LLM understanding)
 
-## About London Tour
-London Tour is a business in the tourism industry.
-
-## Target Audience
-tourists that visit London
-
-## Industry
-tourism
-
+## About Business
 ---
 
 # Additional Resources
