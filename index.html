@@ -1,8 +1,8 @@
 <!DOCTYPE html><html lang="en" dir="ltr"><head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Home - London Tour</title>
-  <meta name="description" content="Home - London Tour provides professional tourism services. Specializing in tower of london tour.">
+  <title data-i18n="home_page_title">Home - London Tour</title>
+  <meta name="description" content="Home - London Tour provides professional tourism services. Specializing in tower of london tour." data-i18n-content="home_meta_description">
   <meta name="keywords" content="tower of london tour, tower of london beefeater tour, st peter's basilica tour, tour guide">
   <meta name="robots" content="index, follow">
   
@@ -73,10 +73,580 @@
   opacity: 0.7;
 }</style>
     <!-- Cookie Consent -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vanilla-cookieconsent@3/dist/cookieconsent.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vanilla-cookieconsent@3/dist/cookieconsent.css">
     <script src="https://cdn.jsdelivr.net/npm/vanilla-cookieconsent@3/dist/cookieconsent.umd.js"></script>
     <!-- Mickidum Accessibility Toolbar -->
     <script src="https://cdn.jsdelivr.net/gh/mickidum/acc_toolbar/acctoolbar/acctoolbar.min.js"></script>
+
+    <!-- Iconify for cross-platform flag icons -->
+    <script src="https://code.iconify.design/3/3.1.1/iconify.min.js"></script><style id="zappy-multilang-css">
+/* ============================================
+   DIRECTION OVERRIDE STYLES
+   Only set direction property, NOT text-align
+   This preserves centered elements
+   ============================================ */
+
+/* Base direction for LTR */
+html[dir="ltr"], html[dir="ltr"] body {
+  direction: ltr !important;
+}
+
+html[dir="ltr"] main,
+html[dir="ltr"] article,
+html[dir="ltr"] section,
+html[dir="ltr"] .content,
+html[dir="ltr"] .container,
+html[dir="ltr"] .wrapper {
+  direction: ltr !important;
+}
+
+/* ONLY apply text-align to legal page content that needs LTR alignment */
+html[dir="ltr"] .legal-content,
+html[dir="ltr"] .terms-content,
+html[dir="ltr"] .privacy-content,
+html[dir="ltr"] .legal-content p,
+html[dir="ltr"] .terms-content p,
+html[dir="ltr"] .privacy-content p,
+html[dir="ltr"] .legal-content li,
+html[dir="ltr"] .terms-content li,
+html[dir="ltr"] .privacy-content li {
+  direction: ltr !important;
+  text-align: left !important;
+}
+
+/* Base direction for RTL */
+html[dir="rtl"], html[dir="rtl"] body {
+  direction: rtl !important;
+}
+
+html[dir="rtl"] main,
+html[dir="rtl"] article,
+html[dir="rtl"] section,
+html[dir="rtl"] .content,
+html[dir="rtl"] .container,
+html[dir="rtl"] .wrapper {
+  direction: rtl !important;
+}
+
+/* ONLY apply text-align to legal page content that needs RTL alignment */
+html[dir="rtl"] .legal-content,
+html[dir="rtl"] .terms-content,
+html[dir="rtl"] .privacy-content,
+html[dir="rtl"] .legal-content p,
+html[dir="rtl"] .terms-content p,
+html[dir="rtl"] .privacy-content p,
+html[dir="rtl"] .legal-content li,
+html[dir="rtl"] .terms-content li,
+html[dir="rtl"] .privacy-content li {
+  direction: rtl !important;
+  text-align: right !important;
+}
+
+
+/* ============================================
+   V2 NAVIGATION FIX
+   CRITICAL: For V2 sites created in RTL (Hebrew), the nav elements
+   inherit direction:rtl from the body. This reverses how flex order
+   is interpreted. For LTR pages, we MUST set direction:ltr on nav
+   containers to make the flex order work correctly.
+   
+   This section is ONLY included for V2 sites (detected by nav-right-group
+   or nav-cta-container classes) to avoid affecting V1 site layouts.
+   ============================================ */
+
+/* Fix V2 navbar layout for LTR pages */
+/* Direction must apply to all screen sizes, but flex-direction: row is desktop-only */
+html[dir="ltr"] header,
+html[dir="ltr"] nav,
+html[dir="ltr"] .navbar,
+html[dir="ltr"] .nav-container {
+  direction: ltr !important;
+}
+
+html[dir="ltr"] .nav-right-group {
+  direction: ltr !important;
+  order: -1 !important;
+}
+
+html[dir="ltr"] .nav-cta-container {
+  direction: ltr !important;
+  order: 1 !important;
+  margin-left: auto !important;
+}
+
+html[dir="ltr"] .nav-menu,
+html[dir="ltr"] #navMenu {
+  direction: ltr !important;
+}
+
+html[dir="ltr"] .nav-brand {
+  direction: ltr !important;
+  order: -1 !important;
+}
+
+/* DESKTOP ONLY: Horizontal flex layout for navbar elements */
+@media (min-width: 769px) {
+  html[dir="ltr"] header,
+  html[dir="ltr"] nav,
+  html[dir="ltr"] .navbar,
+  html[dir="ltr"] .nav-container {
+    flex-direction: row !important;
+  }
+  
+  html[dir="ltr"] .nav-right-group,
+  html[dir="ltr"] .nav-cta-container {
+    flex-direction: row !important;
+  }
+  
+  html[dir="ltr"] .nav-menu,
+  html[dir="ltr"] #navMenu {
+    flex-direction: row !important;
+  }
+}
+
+
+/* Language Switcher Container - Fixed Position */
+.zappy-lang-switcher-container {
+  position: fixed;
+  top: 12px;
+  right: 12px;
+  z-index: 9999;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* RTL: Move to left side */
+html[dir="rtl"] .zappy-lang-switcher-container {
+  right: auto;
+  left: 12px;
+}
+
+/* Language Switcher Styles */
+.lang-switcher {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Language switcher positioning - minimal, only gap spacing */
+/* NOTE: Removed margin-left:auto rules that broke V2 layouts */
+/* V2 layouts handle positioning via flexbox, we just add small gap */
+header .lang-switcher,
+nav .lang-switcher,
+.navbar .lang-switcher {
+  margin-left: 8px;
+  margin-right: 8px;
+}
+
+.lang-switcher-current {
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  background: transparent;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  color: inherit;
+  transition: opacity 0.2s ease;
+}
+
+.lang-switcher-current:hover {
+  opacity: 0.7;
+}
+
+/* ===========================================
+   LANGUAGE DROPDOWN POSITIONING
+   CRITICAL: position: absolute !important overrides any
+   mobile responsive CSS that resets absolute positioning
+   to relative. The dropdown MUST be absolutely positioned
+   relative to its parent .lang-switcher.
+   
+   HIGH SPECIFICITY SELECTORS needed to override:
+   [style*="position: absolute"]:not(...) { position: relative !important }
+   That selector has specificity ~0,4,0 so we need 0,5,0+ to win
+   =========================================== */
+.lang-switcher-dropdown,
+.lang-switcher .lang-switcher-dropdown,
+div.lang-switcher-dropdown,
+.nav-cta-container .lang-switcher .lang-switcher-dropdown,
+.navbar .nav-cta-container .lang-switcher-dropdown {
+  position: absolute !important;
+  top: 100% !important;
+  /* Default LTR: align dropdown's left edge to switcher's left edge */
+  left: 0;
+  right: auto;
+  margin-top: 6px;
+  min-width: 150px;
+  background: white;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8px);
+  transition: all 0.2s ease;
+  overflow: hidden;
+  z-index: 1002 !important;
+}
+
+/* Ultra-high specificity override for problematic mobile responsive CSS */
+/* The problematic rule [style*="position: absolute"]:not():not():not() has specificity 0,4,0 */
+/* We need 0,5,0+ to win, so we add extra class/attribute selectors */
+.lang-switcher .lang-switcher-dropdown[style*="position: absolute"],
+.lang-switcher .lang-switcher-dropdown[style*="position:absolute"],
+.nav-cta-container .lang-switcher .lang-switcher-dropdown[style],
+.navbar .nav-cta-container .lang-switcher-dropdown[style],
+div.lang-switcher > div.lang-switcher-dropdown[style] {
+  position: absolute !important;
+  top: 100% !important;
+  /* Default LTR: align to left */
+  left: 0;
+  right: auto;
+}
+
+.lang-option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 12px 16px;
+  background: none;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  font-size: 14px;
+  color: #333;
+  transition: background 0.15s ease;
+}
+
+html[dir="rtl"] .lang-option {
+  text-align: right;
+}
+
+/* RTL: align dropdown's right edge to switcher's right edge */
+html[dir="rtl"] .lang-switcher-dropdown,
+html[lang="he"] .lang-switcher-dropdown,
+html[lang="ar"] .lang-switcher-dropdown {
+  right: 0;
+  left: auto;
+}
+
+.lang-option:hover {
+  background: #f5f5f5;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  /* Hide desktop lang-switcher on mobile - hamburger menu handles it */
+  /* High specificity needed to override stored CSS: .nav-cta-container .lang-switcher { display: flex !important } */
+  .lang-switcher,
+  .nav-cta-container .lang-switcher,
+  .nav-container .lang-switcher,
+  .navbar .lang-switcher,
+  .navbar .nav-cta-container .lang-switcher,
+  .nav-icons-left .lang-switcher,
+  .nav-ecommerce-icons .lang-switcher {
+    display: none !important;
+  }
+  
+  .zappy-lang-switcher-container {
+    display: none !important;
+  }
+  
+  /* ===========================================
+     MOBILE LANGUAGE SUBMENU (inside hamburger)
+     =========================================== */
+  .mobile-lang-menu {
+    width: 100%;
+    border-top: 1px solid rgba(128, 128, 128, 0.15);
+    margin-top: 8px;
+    padding-top: 8px;
+  }
+  
+  .mobile-lang-toggle {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    padding: 15px 30px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: inherit;
+    font-family: inherit;
+    font-weight: 500;
+    color: inherit;
+    text-align: left;
+  }
+  
+  html[dir="rtl"] .mobile-lang-toggle {
+    text-align: right;
+  }
+  
+  .mobile-lang-chevron {
+    margin-left: auto;
+    transition: transform 0.2s ease;
+    flex-shrink: 0;
+  }
+  
+  html[dir="rtl"] .mobile-lang-chevron {
+    margin-left: 0;
+    margin-right: auto;
+  }
+  
+  .mobile-lang-options {
+    display: none;
+    flex-direction: column;
+    padding: 0 0 8px 0;
+  }
+  
+  .mobile-lang-options.open {
+    display: flex !important;
+  }
+  
+  .mobile-lang-option {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    padding: 12px 30px 12px 50px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: inherit;
+    color: inherit;
+    text-align: left;
+    opacity: 0.85;
+    transition: opacity 0.15s ease;
+  }
+  
+  html[dir="rtl"] .mobile-lang-option {
+    text-align: right;
+    padding: 12px 50px 12px 30px;
+  }
+  
+  .mobile-lang-option:hover,
+  .mobile-lang-option:active {
+    opacity: 1;
+  }
+  
+  .mobile-lang-option img {
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+}
+
+/* ===========================================
+   RTL MOBILE HORIZONTAL OVERFLOW FIX
+   Prevents left whitespace gap in RTL mobile
+   caused by elements extending past viewport
+   =========================================== */
+
+/* Prevent horizontal scroll on RTL pages */
+/* Using 'clip' instead of 'hidden' to avoid breaking position:sticky */
+/* 'hidden' causes overflow-y to compute as 'auto', creating a scroll container */
+html[dir="rtl"],
+html[dir="rtl"] body {
+  overflow-x: clip !important;
+  max-width: 100vw !important;
+}
+
+/* Ensure carousel containers clip overflow to prevent horizontal scroll */
+.zappy-carousel-container,
+.zappy-carousel-wrapper,
+.benefits-section,
+.testimonials-section,
+[class*="carousel"] {
+  overflow-x: hidden !important;
+}
+
+/* Ensure lang-switcher parent clips its positioned children */
+.lang-switcher {
+  overflow: visible; /* Keep visible for dropdown to show */
+}
+
+/* ===========================================
+   MOBILE NAV BUTTON POSITIONING
+   CSS handles positioning based on html[dir] attribute.
+   This allows dynamic RTL/LTR switching without inline styles.
+   
+   LTR (default): hamburger LEFT (20px), phone RIGHT (20px)
+   RTL: hamburger RIGHT (20px), phone LEFT (20px) - mirrored
+   =========================================== */
+@media (max-width: 768px) {
+  /* Base positioning and visibility for mobile nav buttons */
+  /* CRITICAL: display: flex overrides any desktop display: none rules */
+  .mobile-toggle,
+  html:not([data-zappy-site-type="ecommerce"]) .phone-header-btn {
+    display: flex !important;
+    position: absolute !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    z-index: 1001 !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 44px !important;
+    height: 44px !important;
+    background: none !important;
+    border: none !important;
+    cursor: pointer !important;
+  }
+  
+  /* Phone button color - use accent color for visibility */
+  html:not([data-zappy-site-type="ecommerce"]) .phone-header-btn {
+    color: var(--accent, #f59e0b) !important;
+  }
+  
+  html:not([data-zappy-site-type="ecommerce"]) .phone-header-btn svg {
+    width: 24px !important;
+    height: 24px !important;
+    fill: currentColor !important;
+  }
+  
+  /* LTR positioning (default) - hamburger LEFT, phone RIGHT */
+  html:not([dir="rtl"]):not([lang="he"]):not([lang="ar"]) .mobile-toggle,
+  html[dir="ltr"] .mobile-toggle {
+    left: 20px !important;
+    right: auto !important;
+  }
+  
+  html:not([data-zappy-site-type="ecommerce"]):not([dir="rtl"]):not([lang="he"]):not([lang="ar"]) .phone-header-btn,
+  html:not([data-zappy-site-type="ecommerce"])[dir="ltr"] .phone-header-btn {
+    right: 20px !important;
+    left: auto !important;
+  }
+  
+  /* LTR mobile menu slides from LEFT */
+  html:not([dir="rtl"]):not([lang="he"]):not([lang="ar"]) .nav-menu,
+  html[dir="ltr"] .nav-menu {
+    left: 0 !important;
+    right: auto !important;
+  }
+  
+  /* ===========================================
+     MOBILE NAV MENU - VERTICAL LAYOUT FIX
+     CRITICAL: Override any desktop flex-direction: row rules
+     The mobile menu MUST stack vertically (column), not horizontally (row)
+     =========================================== */
+  html[dir="ltr"] .nav-menu,
+  html[dir="ltr"] .nav-menu.active,
+  html[dir="ltr"] #navMenu,
+  html[dir="ltr"] #navMenu.active,
+  html:not([dir="rtl"]):not([lang="he"]):not([lang="ar"]) .nav-menu,
+  html:not([dir="rtl"]):not([lang="he"]):not([lang="ar"]) .nav-menu.active {
+    flex-direction: column !important;
+    align-items: stretch !important;
+  }
+  
+  /* RTL mobile menu - also vertical layout */
+  html[dir="rtl"] .nav-menu,
+  html[dir="rtl"] .nav-menu.active,
+  html[dir="rtl"] #navMenu,
+  html[dir="rtl"] #navMenu.active,
+  html[lang="he"] .nav-menu,
+  html[lang="he"] .nav-menu.active,
+  html[lang="ar"] .nav-menu,
+  html[lang="ar"] .nav-menu.active {
+    flex-direction: column !important;
+    align-items: stretch !important;
+  }
+  
+  /* LTR mobile menu text alignment - left aligned */
+  html:not([dir="rtl"]):not([lang="he"]):not([lang="ar"]) .nav-menu li,
+  html:not([dir="rtl"]):not([lang="he"]):not([lang="ar"]) .nav-menu a,
+  html[dir="ltr"] .nav-menu li,
+  html[dir="ltr"] .nav-menu a {
+    text-align: left !important;
+  }
+  
+  /* ===========================================
+     LTR MOBILE NAV-CONTAINER LAYOUT FIX
+     V2 sites have nav-container with flex-direction: row-reverse
+     for RTL. For LTR, we need flex-direction: row and centered logo.
+     =========================================== */
+  html[dir="ltr"] .nav-container,
+  html:not([dir="rtl"]):not([lang="he"]):not([lang="ar"]) .nav-container {
+    flex-direction: row !important;
+    justify-content: center !important;
+  }
+  
+  /* LTR: Center the logo/nav-brand in mobile navbar */
+  html[dir="ltr"] .nav-brand,
+  html:not([dir="rtl"]):not([lang="he"]):not([lang="ar"]) .nav-brand {
+    order: 0 !important;
+    margin: 0 auto !important;
+  }
+  
+  /* RTL: Center the logo/nav-brand in mobile navbar */
+  html[dir="rtl"] .nav-brand,
+  html[lang="he"] .nav-brand,
+  html[lang="ar"] .nav-brand {
+    order: 0 !important;
+    margin: 0 auto !important;
+  }
+  
+  /* RTL lang-switcher dropdown constraint */
+  html[dir="rtl"] .lang-switcher {
+    position: relative;
+  }
+  
+  html[dir="rtl"] .lang-switcher-dropdown {
+    left: auto !important;
+    right: 0 !important;
+    max-width: calc(100vw - 20px);
+  }
+  
+  /* ===========================================
+     RTL MOBILE NAV BUTTON POSITIONING
+     In RTL: hamburger RIGHT, phone LEFT (mirror of LTR)
+     =========================================== */
+  html[dir="rtl"] .mobile-toggle,
+  html[lang="he"] .mobile-toggle,
+  html[lang="ar"] .mobile-toggle {
+    left: auto !important;
+    right: 20px !important;
+  }
+  
+  html[dir="rtl"]:not([data-zappy-site-type="ecommerce"]) .phone-header-btn,
+  html[lang="he"]:not([data-zappy-site-type="ecommerce"]) .phone-header-btn,
+  html[lang="ar"]:not([data-zappy-site-type="ecommerce"]) .phone-header-btn {
+    left: 20px !important;
+    right: auto !important;
+  }
+
+  /* Explicitly hide phone button on e-commerce sites (cleaner than fighting with e-commerce CSS). */
+  html[data-zappy-site-type="ecommerce"] .phone-header-btn {
+    display: none !important;
+  }
+  
+  /* RTL mobile menu slides from RIGHT */
+  html[dir="rtl"] .nav-menu,
+  html[lang="he"] .nav-menu,
+  html[lang="ar"] .nav-menu {
+    left: auto !important;
+    right: 0 !important;
+  }
+  
+  /* ===========================================
+     MOBILE LANGUAGE SWITCHER
+     Desktop lang-switcher is hidden on mobile.
+     Language selection is handled by the hamburger
+     menu submenu (.mobile-lang-menu) instead.
+     High specificity to override stored CSS.
+     =========================================== */
+  .lang-switcher,
+  .nav-cta-container .lang-switcher,
+  .nav-container .lang-switcher,
+  .navbar .lang-switcher,
+  .navbar .nav-cta-container .lang-switcher,
+  .nav-icons-left .lang-switcher,
+  .nav-ecommerce-icons .lang-switcher {
+    display: none !important;
+  }
+}
+
+</style>
 <!-- Zappy Analytics -->
 <script>
 (function() {
@@ -321,25 +891,50 @@
       }
       @media (min-width: 769px) { .mobile-submenu-toggle { display: none !important; } }
     </style>
+
+    <style id="mobile-lang-menu-deployed-css">
+    @media (max-width: 768px) {
+      .lang-switcher,
+      .nav-cta-container .lang-switcher,
+      .nav-container .lang-switcher,
+      .navbar .lang-switcher,
+      .navbar .nav-cta-container .lang-switcher,
+      .nav-icons-left .lang-switcher,
+      .nav-ecommerce-icons .lang-switcher { display: none !important; }
+      .mobile-lang-menu { width: 100%; border-top: 1px solid rgba(128,128,128,0.2); padding: 8px 0 0 0; margin-top: 8px; }
+      .mobile-lang-toggle { display: flex !important; align-items: center; justify-content: space-between; width: 100%; padding: 12px 16px; background: none; border: none; cursor: pointer; font-size: 15px; color: inherit; font-family: inherit; }
+      .mobile-lang-toggle::after { content: ''; display: inline-block; width: 8px; height: 8px; border-right: 2px solid currentColor; border-bottom: 2px solid currentColor; transform: rotate(45deg); transition: transform 0.3s ease; margin-left: 8px; }
+      .mobile-lang-toggle.expanded::after { transform: rotate(-135deg); }
+      .mobile-lang-options { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
+      .mobile-lang-options.expanded { max-height: 300px; }
+      .mobile-lang-option { display: flex !important; align-items: center; gap: 10px; padding: 10px 24px; text-decoration: none; color: inherit; font-size: 14px; font-family: inherit; }
+      .mobile-lang-option:hover { background: rgba(128,128,128,0.1); }
+      .mobile-lang-option.active { font-weight: 600; opacity: 0.7; pointer-events: none; }
+      .mobile-lang-option img { width: 20px; height: 20px; border-radius: 50%; }
+    }
+    @media (min-width: 769px) {
+      .mobile-lang-menu { display: none !important; }
+    }
+    </style>
 </head>
 <body>
 
 <!-- Zappy Attribution Header -->
 <div id="zappy-attribution-header" class="zappy-header" style="display: none;">
-  <p>Happily created by&nbsp;<a href="https://zappy5.com" target="_blank" rel="noopener noreferrer" class="zappy-link">Zappy</a></p>
+  <p data-i18n="home_p_20">Happily created by&nbsp;<a href="https://zappy5.com" target="_blank" rel="noopener noreferrer" class="zappy-link" data-i18n="home_link_60">Zappy</a></p>
 </div>
   <nav class="navbar">
   <button class="mobile-toggle" id="mobileToggle" aria-label="Menu">
-    <svg class="hamburger-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
+    <svg class="hamburger-icon" width="24" height="24" viewbox="0 0 24 24" fill="none">
       <path d="M3 12h18M3 6h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
     </svg>
-    <svg class="close-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" style="display: none;">
+    <svg class="close-icon" width="24" height="24" viewbox="0 0 24 24" fill="none" style="display: none;">
       <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
     </svg>
   </button>
   
   <button class="phone-header-btn" aria-label="Call">
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+    <svg width="20" height="20" viewbox="0 0 24 24" fill="currentColor">
       <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
     </svg>
   </button>
@@ -347,14 +942,22 @@
   <div class="nav-container">
     <div class="nav-brand">
       <a href="/" class="logo-link">
-        <img src="/assets/business-logo.webp" alt="London Tour" class="logo" />
+        <img src="/assets/business-logo.webp" alt="London Tour" class="logo" data-i18n-alt="home_alt_87">
       </a>
     </div>
     
-    <ul class="nav-menu" id="navMenu"><li><a href="/tours">Tours</a></li><li><a href="/about">About</a></li></ul>
+    <ul class="nav-menu" id="navMenu"><li><a href="/tours" data-i18n="home_nav_84">Tours</a></li><li><a href="/about" data-i18n="home_nav_85">About</a></li></ul>
     
-    <div class="nav-cta-container">
-      <a href="/contact" class="nav-cta-btn">Contact</a>
+    
+<div class="lang-switcher" data-no-icon-edit="true" data-icon-color="#F2F6FF" style="position:relative;display:inline-flex;align-items:center;z-index:1000;margin:0 4px;">
+  <button class="lang-switcher-current" aria-haspopup="true" aria-expanded="false" data-no-icon-edit="true" style="display:flex;align-items:center;padding:8px;background:transparent;border:none;border-radius:6px;cursor:pointer;color:#F2F6FF;">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="#F2F6FF" style="flex-shrink:0;" data-no-icon-edit="true"><path d="M12.039,.002s0,0,0,0c-.013,0-.026-.002-.039-.002-.005,0-.009,0-.014,0-.002,0-.003,0-.005,0C5.373,.011,0,5.39,0,12s5.383,12,12,12,12-5.383,12-12S18.638,.023,12.039,.002Zm9.747,6.998h-4.814c-1.067-2.669-2.712-4.781-3.731-5.925,3.734,.421,6.901,2.719,8.546,5.925Zm-4.786,5c0,1.407-.292,2.753-.731,4H7.731c-.439-1.247-.731-2.593-.731-4s.292-2.754,.73-4h8.539c.439,1.247,.731,2.593,.731,4Zm-1.122,5c-1.229,2.838-3.116,4.99-3.878,5.788-.762-.798-2.649-2.95-3.878-5.788h7.755ZM8.121,7c1.229-2.841,3.117-4.992,3.879-5.789,.762,.798,2.649,2.95,3.878,5.789h-7.757ZM10.757,1.075c-1.025,1.15-2.668,3.264-3.73,5.925H2.214C3.859,3.795,7.024,1.498,10.757,1.075ZM1.764,8H6.668c-.403,1.247-.668,2.589-.668,4s.265,2.752,.669,4H1.764c-.487-1.242-.764-2.588-.764-4s.277-2.758,.764-4Zm.45,9H7.029c1.067,2.669,2.712,4.781,3.731,5.925-3.734-.421-6.901-2.719-8.546-5.925Zm11.026,5.925c1.019-1.144,2.664-3.257,3.731-5.925h4.814c-1.645,3.206-4.812,5.504-8.546,5.925Zm8.996-6.925h-4.905c.404-1.248,.669-2.589,.669-4s-.265-2.752-.669-4h4.905c.487,1.242,.764,2.588,.764,4s-.277,2.758-.764,4Z"></path></svg>
+  </button>
+  <div class="lang-switcher-dropdown" role="menu" style="position:absolute;top:100%;right:0;margin-top:4px;min-width:140px;background:white;border:1px solid rgba(128,128,128,0.2);border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,0.15);opacity:0;visibility:hidden;transform:translateY(-8px);transition:all 0.2s ease;z-index:1001;">
+    <button class="lang-option" data-lang="he" style="display:flex;align-items:center;gap:8px;width:100%;padding:10px 14px;background:none;border:none;text-align:left;cursor:pointer;font-size:14px;color:#333;"><img src="https://api.iconify.design/circle-flags/il.svg" width="20" height="20" alt="" style="display:inline-block;vertical-align:middle;border-radius:50%;"> עברית</button>
+  </div>
+</div><div class="nav-cta-container">
+      <a href="/contact" class="nav-cta-btn" data-i18n="home_nav_86">Contact</a>
     </div>
   </div>
 </nav>
@@ -761,39 +1364,39 @@
     <section class="home-hero-section" data-layout-spec="Home-Hero">
   <div class="hero-container">
     <div class="hero-content">
-      <h1>Night Tours, Neon Streets, <span class="accent-line">Real Bites</span></h1>
-      <p class="hero-description">Explore iconic city lights with a guide who knows the hidden kitchens, late-night classics, and the best glow-on-the-river views.</p>
+      <h1 data-i18n="home_h1_1">Night Tours, Neon Streets, <span class="accent-line" data-i18n="home_span_58">Real Bites</span></h1>
+      <p class="hero-description" data-i18n="home_p_21">Explore iconic city lights with a guide who knows the hidden kitchens, late-night classics, and the best glow-on-the-river views.</p>
       <div class="hero-cta-group">
-        <a href="/contact" class="btn-primary">Check Availability</a>
-        <a href="/contact" class="btn-secondary">Ask a Question</a>
+        <a href="/contact" class="btn-primary" data-i18n="home_link_61">Check Availability</a>
+        <a href="/contact" class="btn-secondary" data-i18n="home_link_62">Ask a Question</a>
       </div>
     </div>
     <div class="hero-image-panel">
-      <img data-placeholder="home-hero-london-night" data-context="Night photography of London streets with neon reflections, wet pavement reflecting colorful lights, iconic red phone booth glowing, Big Ben or Tower Bridge visible in background with dramatic lighting, cinematic urban nightlife atmosphere, vibrant cyan and magenta neon signs, moody dark blue hour sky" width="600" height="800" src="/assets/site-home-image-1.webp" alt="London streets at night with neon reflections and iconic landmarks">
+      <img data-placeholder="home-hero-london-night" data-context="Night photography of London streets with neon reflections, wet pavement reflecting colorful lights, iconic red phone booth glowing, Big Ben or Tower Bridge visible in background with dramatic lighting, cinematic urban nightlife atmosphere, vibrant cyan and magenta neon signs, moody dark blue hour sky" width="600" height="800" src="/assets/site-home-image-1.webp" alt="London streets at night with neon reflections and iconic landmarks" data-i18n-alt="home_alt_88">
     </div>
   </div>
   <div class="info-strip">
     <div class="info-card">
-      <svg data-element-type="icon" data-icon-type="svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-      <p class="info-text">Duration: 2.5–3 hours</p>
+      <svg data-element-type="icon" data-icon-type="svg" width="32" height="32" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+      <p class="info-text" data-i18n="home_p_22">Duration: 2.5–3 hours</p>
     </div>
     <div class="info-card">
-      <svg data-element-type="icon" data-icon-type="svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
-      <p class="info-text">Stops: 5–7 tastings</p>
+      <svg data-element-type="icon" data-icon-type="svg" width="32" height="32" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+      <p class="info-text" data-i18n="home_p_23">Stops: 5–7 tastings</p>
     </div>
     <div class="info-card">
-      <svg data-element-type="icon" data-icon-type="svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"></path><path d="M7 2v20"></path><path d="M21 15V2v0a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"></path></svg>
-      <p class="info-text">Dietary options: available with notice</p>
+      <svg data-element-type="icon" data-icon-type="svg" width="32" height="32" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"></path><path d="M7 2v20"></path><path d="M21 15V2v0a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"></path></svg>
+      <p class="info-text" data-i18n="home_p_24">Dietary options: available with notice</p>
     </div>
   </div>
   <div class="divider-wrapper" aria-hidden="true">
-    <svg preserveAspectRatio="none" viewBox="0 0 1200 80" fill="none" xmlns="http://www.w3.org/2000/svg" data-no-icon-edit="true" aria-hidden="true">
+    <svg preserveaspectratio="none" viewbox="0 0 1200 80" fill="none" xmlns="http://www.w3.org/2000/svg" data-no-icon-edit="true" aria-hidden="true">
       <defs>
-        <linearGradient id="neon-glow" x1="0%" y1="0%" x2="100%" y2="0%">
+        <lineargradient id="neon-glow" x1="0%" y1="0%" x2="100%" y2="0%">
           <stop offset="0%" style="stop-color:rgba(0,215,255,0.4);stop-opacity:1"></stop>
           <stop offset="50%" style="stop-color:rgba(0,215,255,0.1);stop-opacity:1"></stop>
           <stop offset="100%" style="stop-color:rgba(0,215,255,0);stop-opacity:1"></stop>
-        </linearGradient>
+        </lineargradient>
       </defs>
       <path d="M0 0 L1200 80 L1200 0 Z" fill="var(--bg-light)"></path>
       <path d="M0 0 L1200 80" stroke="url(#neon-glow)" stroke-width="2" fill="none"></path>
@@ -803,62 +1406,62 @@
 
 <section class="home-signature-tours-section" data-layout-spec="Home-signature-tours">
   <div class="signature-tours-container">
-    <h2 class="section-title">Choose Your Night</h2>
+    <h2 class="section-title" data-i18n="home_h2_2">Choose Your Night</h2>
     
     <div class="tours-grid">
       <article class="tour-card">
         <div class="tour-image-wrapper">
-          <img data-placeholder="home-signature-tours-image-1" data-context="Night photography of vibrant Soho London street with neon lights, street food vendors, glowing signs, bustling nightlife atmosphere, duotone effect with cyan and pink accents, cinematic urban photography" width="600" height="400" src="/assets/site-home-image-2.webp" alt="Neon-lit Soho street at night with food vendors">
+          <img data-placeholder="home-signature-tours-image-1" data-context="Night photography of vibrant Soho London street with neon lights, street food vendors, glowing signs, bustling nightlife atmosphere, duotone effect with cyan and pink accents, cinematic urban photography" width="600" height="400" src="/assets/site-home-image-2.webp" alt="Neon-lit Soho street at night with food vendors" data-i18n-alt="home_alt_89">
         </div>
         <div class="tour-content">
-          <h3>Neon Bites in Soho</h3>
-          <p class="tour-spec"><strong>Best for:</strong> first-timers</p>
-          <p class="tour-spec"><strong>Tastings:</strong> street-to-speakeasy</p>
-          <p class="tour-spec"><strong>Pace:</strong> lively</p>
+          <h3 data-i18n="home_h3_6">Neon Bites in Soho</h3>
+          <p class="tour-spec" data-i18n="home_p_25"><strong>Best for:</strong> first-timers</p>
+          <p class="tour-spec" data-i18n="home_p_26"><strong>Tastings:</strong> street-to-speakeasy</p>
+          <p class="tour-spec" data-i18n="home_p_27"><strong>Pace:</strong> lively</p>
         </div>
       </article>
 
       <article class="tour-card">
         <div class="tour-image-wrapper">
-          <img data-placeholder="home-signature-tours-image-2" data-context="Night photography of London Thames riverside with illuminated bridges, city skyline reflections in water, iconic landmarks lit up at night, duotone effect with cyan and pink accents, cinematic urban photography" width="600" height="400" src="/assets/site-home-image-3.webp" alt="Thames riverside at night with illuminated bridges and skyline">
+          <img data-placeholder="home-signature-tours-image-2" data-context="Night photography of London Thames riverside with illuminated bridges, city skyline reflections in water, iconic landmarks lit up at night, duotone effect with cyan and pink accents, cinematic urban photography" width="600" height="400" src="/assets/site-home-image-3.webp" alt="Thames riverside at night with illuminated bridges and skyline" data-i18n-alt="home_alt_90">
         </div>
         <div class="tour-content">
-          <h3>Riverside Lights + Late Plates</h3>
-          <p class="tour-spec"><strong>Best for:</strong> skyline lovers</p>
-          <p class="tour-spec"><strong>Stops:</strong> river views + classic bites</p>
-          <p class="tour-spec"><strong>Finish:</strong> photo-worthy bridge</p>
+          <h3 data-i18n="home_h3_7">Riverside Lights + Late Plates</h3>
+          <p class="tour-spec" data-i18n="home_p_28"><strong>Best for:</strong> skyline lovers</p>
+          <p class="tour-spec" data-i18n="home_p_29"><strong>Stops:</strong> river views + classic bites</p>
+          <p class="tour-spec" data-i18n="home_p_30"><strong>Finish:</strong> photo-worthy bridge</p>
         </div>
       </article>
 
       <article class="tour-card">
         <div class="tour-image-wrapper">
-          <img data-placeholder="home-signature-tours-image-3" data-context="Night photography of London street food market after dark, colorful food stalls with glowing lights, diverse cuisine vendors, atmospheric evening market scene, duotone effect with cyan and pink accents, cinematic urban photography" width="600" height="400" src="/assets/site-home-image-4.webp" alt="London street food market illuminated at night">
+          <img data-placeholder="home-signature-tours-image-3" data-context="Night photography of London street food market after dark, colorful food stalls with glowing lights, diverse cuisine vendors, atmospheric evening market scene, duotone effect with cyan and pink accents, cinematic urban photography" width="600" height="400" src="/assets/site-home-image-4.webp" alt="London street food market illuminated at night" data-i18n-alt="home_alt_91">
         </div>
         <div class="tour-content">
-          <h3>Markets After Dark</h3>
-          <p class="tour-spec"><strong>Best for:</strong> food explorers</p>
-          <p class="tour-spec"><strong>Focus:</strong> local favorites</p>
-          <p class="tour-spec"><strong>Notes:</strong> vegetarian-friendly route</p>
+          <h3 data-i18n="home_h3_8">Markets After Dark</h3>
+          <p class="tour-spec" data-i18n="home_p_31"><strong>Best for:</strong> food explorers</p>
+          <p class="tour-spec" data-i18n="home_p_32"><strong>Focus:</strong> local favorites</p>
+          <p class="tour-spec" data-i18n="home_p_33"><strong>Notes:</strong> vegetarian-friendly route</p>
         </div>
       </article>
     </div>
 
     <div class="cta-row">
-      <a href="/contact" class="btn-primary">Message Us to Reserve</a>
+      <a href="/contact" class="btn-primary" data-i18n="home_link_63">Message Us to Reserve</a>
     </div>
   </div>
 
   <div class="divider-wrapper" aria-hidden="true">
-    <svg preserveAspectRatio="none" viewBox="0 0 1200 80" data-no-icon-edit="true" aria-hidden="true">
+    <svg preserveaspectratio="none" viewbox="0 0 1200 80" data-no-icon-edit="true" aria-hidden="true">
       <defs>
-        <linearGradient id="fadeGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+        <lineargradient id="fadeGradient" x1="0%" y1="0%" x2="0%" y2="100%">
           <stop offset="0%" style="stop-color:#0D1220;stop-opacity:1"></stop>
           <stop offset="100%" style="stop-color:#070A12;stop-opacity:1"></stop>
-        </linearGradient>
+        </lineargradient>
       </defs>
       <rect width="1200" height="80" fill="url(#fadeGradient)"></rect>
       <line x1="0" y1="40" x2="1200" y2="40" stroke="rgba(0,215,255,0.4)" stroke-width="2" stroke-dasharray="8,12">
-        <animate attributeName="stroke-opacity" values="0.4;0.8;0.4" dur="7s" repeatCount="indefinite"></animate>
+        <animate attributename="stroke-opacity" values="0.4;0.8;0.4" dur="7s" repeatcount="indefinite"></animate>
       </line>
     </svg>
   </div>
@@ -869,20 +1472,20 @@
     <div class="route-preview-grid">
       <div class="route-map-column">
         <div class="map-wrapper">
-          <img data-placeholder="home-route-preview-image-1" data-context="Night photography of London cityscape with illuminated landmarks like Tower Bridge or Thames riverfront, dark atmospheric sky with city lights creating a vibrant nighttime scene, moody urban photography with neon reflections on water" width="600" height="800" src="/assets/site-home-image-5.webp" alt="London night cityscape with illuminated landmarks">
+          <img data-placeholder="home-route-preview-image-1" data-context="Night photography of London cityscape with illuminated landmarks like Tower Bridge or Thames riverfront, dark atmospheric sky with city lights creating a vibrant nighttime scene, moody urban photography with neon reflections on water" width="600" height="800" src="/assets/site-home-image-5.webp" alt="London night cityscape with illuminated landmarks" data-i18n-alt="home_alt_92">
           <div class="route-overlay" aria-hidden="true">
-            <svg class="route-path" viewBox="0 0 300 600" preserveAspectRatio="none" data-no-icon-edit="true" aria-hidden="true">
+            <svg class="route-path" viewbox="0 0 300 600" preserveaspectratio="none" data-no-icon-edit="true" aria-hidden="true">
               <defs>
-                <linearGradient id="routeGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                <lineargradient id="routeGradient" x1="0%" y1="0%" x2="0%" y2="100%">
                   <stop offset="0%" style="stop-color:var(--primary);stop-opacity:1"></stop>
                   <stop offset="100%" style="stop-color:var(--secondary);stop-opacity:0.8"></stop>
-                </linearGradient>
+                </lineargradient>
                 <filter id="glow">
-                  <feGaussianBlur stdDeviation="3" result="coloredBlur"></feGaussianBlur>
-                  <feMerge>
-                    <feMergeNode in="coloredBlur"></feMergeNode>
-                    <feMergeNode in="SourceGraphic"></feMergeNode>
-                  </feMerge>
+                  <fegaussianblur stddeviation="3" result="coloredBlur"></fegaussianblur>
+                  <femerge>
+                    <femergenode in="coloredBlur"></femergenode>
+                    <femergenode in="SourceGraphic"></femergenode>
+                  </femerge>
                 </filter>
               </defs>
               <path d="M 80 80 Q 120 180 100 250 T 140 400 Q 160 480 120 550" stroke="url(#routeGradient)" stroke-width="3" fill="none" filter="url(#glow)"></path>
@@ -907,47 +1510,47 @@
       </div>
       
       <div class="route-content-column">
-        <h2>A Route That Moves Like Music</h2>
-        <p class="route-intro">Short walks, big flavors, and timed viewpoints—so you see the city at its brightest without feeling rushed.</p>
+        <h2 data-i18n="home_h2_3">A Route That Moves Like Music</h2>
+        <p class="route-intro" data-i18n="home_p_34">Short walks, big flavors, and timed viewpoints—so you see the city at its brightest without feeling rushed.</p>
         
         <div class="stops-list">
           <div class="stop-card">
             <div class="stop-number">1</div>
             <div class="stop-content">
-              <h3>First Taste</h3>
-              <p>Warm-up bite near buzzing side streets.</p>
+              <h3 data-i18n="home_h3_9">First Taste</h3>
+              <p data-i18n="home_p_35">Warm-up bite near buzzing side streets.</p>
             </div>
           </div>
           
           <div class="stop-card">
             <div class="stop-number">2</div>
             <div class="stop-content">
-              <h3>Neon Corner</h3>
-              <p>A classic spot under glowing signage.</p>
+              <h3 data-i18n="home_h3_10">Neon Corner</h3>
+              <p data-i18n="home_p_36">A classic spot under glowing signage.</p>
             </div>
           </div>
           
           <div class="stop-card">
             <div class="stop-number">3</div>
             <div class="stop-content">
-              <h3>Hidden Kitchen</h3>
-              <p>Small venue, big signature dish.</p>
+              <h3 data-i18n="home_h3_11">Hidden Kitchen</h3>
+              <p data-i18n="home_p_37">Small venue, big signature dish.</p>
             </div>
           </div>
           
           <div class="stop-card">
             <div class="stop-number">4</div>
             <div class="stop-content">
-              <h3>Night Market Moment</h3>
-              <p>Quick tastings with local chatter.</p>
+              <h3 data-i18n="home_h3_12">Night Market Moment</h3>
+              <p data-i18n="home_p_38">Quick tastings with local chatter.</p>
             </div>
           </div>
           
           <div class="stop-card">
             <div class="stop-number">5</div>
             <div class="stop-content">
-              <h3>Final View</h3>
-              <p>Finish with lights on the water.</p>
+              <h3 data-i18n="home_h3_13">Final View</h3>
+              <p data-i18n="home_p_39">Finish with lights on the water.</p>
             </div>
           </div>
         </div>
@@ -961,61 +1564,61 @@
 <section class="home-social-proof-section" data-layout-spec="Home-social-proof">
   <div class="social-proof-container">
     <div class="social-proof-header">
-      <h2>What Guests Remember</h2>
-      <p class="intro-text">Fast pacing, clear meeting points, and the kind of food you only find when someone local takes you.</p>
+      <h2 data-i18n="home_h2_4">What Guests Remember</h2>
+      <p class="intro-text" data-i18n="home_p_40">Fast pacing, clear meeting points, and the kind of food you only find when someone local takes you.</p>
     </div>
 
     <div class="reviews-grid">
       <div class="review-card">
-        <p class="review-quote">"Every stop felt intentional—zero tourist traps."</p>
-        <p class="review-author">Sarah M. · Evening Food Tour</p>
+        <p class="review-quote" data-i18n="home_p_41">"Every stop felt intentional—zero tourist traps."</p>
+        <p class="review-author" data-i18n="home_p_42">Sarah M. · Evening Food Tour</p>
       </div>
 
       <div class="review-card">
-        <p class="review-quote">"Perfect balance of walking, bites, and skyline moments."</p>
-        <p class="review-author">James K. · Tower of London Tour</p>
+        <p class="review-quote" data-i18n="home_p_43">"Perfect balance of walking, bites, and skyline moments."</p>
+        <p class="review-author" data-i18n="home_p_44">James K. · Tower of London Tour</p>
       </div>
 
       <div class="review-card">
-        <p class="review-quote">"The guide's timing with the city lights was unreal."</p>
-        <p class="review-author">Emma L. · Night Lights Experience</p>
+        <p class="review-quote" data-i18n="home_p_45">"The guide's timing with the city lights was unreal."</p>
+        <p class="review-author" data-i18n="home_p_46">Emma L. · Night Lights Experience</p>
       </div>
 
       <div class="review-card">
-        <p class="review-quote">"Best evening we had—simple to join, easy to follow."</p>
-        <p class="review-author">David R. · Historic Pub Walk</p>
+        <p class="review-quote" data-i18n="home_p_47">"Best evening we had—simple to join, easy to follow."</p>
+        <p class="review-author" data-i18n="home_p_48">David R. · Historic Pub Walk</p>
       </div>
     </div>
 
     <div class="stats-row">
       <div class="stat-block">
-        <h3>5–7</h3>
-        <p>tastings per tour</p>
+        <h3 data-i18n="home_h3_14">5–7</h3>
+        <p data-i18n="home_p_49">tastings per tour</p>
       </div>
       <div class="stat-block">
-        <h3>2.5–3h</h3>
-        <p>typical duration</p>
+        <h3 data-i18n="home_h3_15">2.5–3h</h3>
+        <p data-i18n="home_p_50">typical duration</p>
       </div>
       <div class="stat-block">
-        <h3>Small</h3>
-        <p>group sizes</p>
+        <h3 data-i18n="home_h3_16">Small</h3>
+        <p data-i18n="home_p_51">group sizes</p>
       </div>
     </div>
   </div>
 
   <div class="divider-wrapper" aria-hidden="true">
-    <svg preserveAspectRatio="none" viewBox="0 0 1200 120" xmlns="http://www.w3.org/2000/svg" data-no-icon-edit="true" aria-hidden="true">
+    <svg preserveaspectratio="none" viewbox="0 0 1200 120" xmlns="http://www.w3.org/2000/svg" data-no-icon-edit="true" aria-hidden="true">
       <defs>
-        <linearGradient id="neonArc" x1="0%" y1="0%" x2="100%" y2="0%">
+        <lineargradient id="neonArc" x1="0%" y1="0%" x2="100%" y2="0%">
           <stop offset="0%" style="stop-color:#00D4FF;stop-opacity:0.6"></stop>
           <stop offset="50%" style="stop-color:#00D4FF;stop-opacity:0.9"></stop>
           <stop offset="100%" style="stop-color:#00D4FF;stop-opacity:0.6"></stop>
-        </linearGradient>
-        <linearGradient id="amberHighlight" x1="0%" y1="0%" x2="100%" y2="0%">
+        </lineargradient>
+        <lineargradient id="amberHighlight" x1="0%" y1="0%" x2="100%" y2="0%">
           <stop offset="0%" style="stop-color:#FFD166;stop-opacity:0.4"></stop>
           <stop offset="50%" style="stop-color:#FFD166;stop-opacity:0.8"></stop>
           <stop offset="100%" style="stop-color:#FFD166;stop-opacity:0.4"></stop>
-        </linearGradient>
+        </lineargradient>
       </defs>
       <path d="M0,60 Q300,20 600,40 T1200,60 L1200,120 L0,120 Z" fill="var(--bg-dark)"></path>
       <path d="M0,60 Q300,20 600,40 T1200,60" stroke="url(#neonArc)" stroke-width="3" fill="none" opacity="0.8"></path>
@@ -1027,27 +1630,27 @@
 <section class="home-cta-section" data-layout-spec="Home-cta">
   <div class="cta-vignette" aria-hidden="true"></div>
   <div class="cta-skyline" aria-hidden="true" data-no-icon-edit="true">
-    <svg viewBox="0 0 1200 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" data-no-icon-edit="true" aria-hidden="true">
+    <svg viewbox="0 0 1200 120" preserveaspectratio="none" xmlns="http://www.w3.org/2000/svg" data-no-icon-edit="true" aria-hidden="true">
       <path d="M0,80 L80,80 L80,40 L120,40 L120,60 L180,60 L180,30 L220,30 L220,50 L280,50 L280,20 L320,20 L320,45 L380,45 L380,35 L420,35 L420,55 L480,55 L480,25 L520,25 L520,40 L580,40 L580,50 L620,50 L620,30 L680,30 L680,60 L720,60 L720,35 L780,35 L780,55 L840,55 L840,20 L880,20 L880,45 L940,45 L940,40 L980,40 L980,60 L1040,60 L1040,30 L1080,30 L1080,50 L1120,50 L1120,80 L1200,80 L1200,120 L0,120 Z" fill="rgba(0, 215, 255, 0.08)"></path>
       <path d="M0,85 L85,85 L85,50 L125,50 L125,65 L185,65 L185,40 L225,40 L225,55 L285,55 L285,30 L325,30 L325,50 L385,50 L385,45 L425,45 L425,60 L485,60 L485,35 L525,35 L525,45 L585,45 L585,55 L625,55 L625,40 L685,40 L685,65 L725,65 L725,45 L785,45 L785,60 L845,60 L845,30 L885,30 L885,50 L945,50 L945,45 L985,45 L985,65 L1045,65 L1045,40 L1085,40 L1085,55 L1125,55 L1125,85 L1200,85 L1200,120 L0,120 Z" fill="rgba(0, 215, 255, 0.05)"></path>
     </svg>
   </div>
   <div class="cta-container">
     <div class="cta-content">
-      <h2 class="cta-headline">Ready for a Night That Plans Itself?</h2>
-      <p class="cta-description">Tell us your date range and dietary needs—we'll reply with the best route options.</p>
-      <a href="/contact" class="cta-button btn-primary">Contact My Business</a>
+      <h2 class="cta-headline" data-i18n="home_h2_5">Ready for a Night That Plans Itself?</h2>
+      <p class="cta-description" data-i18n="home_p_52">Tell us your date range and dietary needs—we'll reply with the best route options.</p>
+      <a href="/contact" class="cta-button btn-primary" data-i18n="home_link_64">Contact My Business</a>
       <div class="cta-reassurance">
-        <p class="reassurance-item">Clear meeting point instructions</p>
-        <p class="reassurance-item">Dietary options supported with notice</p>
-        <p class="reassurance-item">Quick replies, simple coordination</p>
+        <p class="reassurance-item" data-i18n="home_p_53">Clear meeting point instructions</p>
+        <p class="reassurance-item" data-i18n="home_p_54">Dietary options supported with notice</p>
+        <p class="reassurance-item" data-i18n="home_p_55">Quick replies, simple coordination</p>
       </div>
     </div>
   </div>
 </section>
   </main>
   
-  <footer class="site-footer"><div class="footer-container"><div class="footer-content"><div class="footer-column footer-about"><img src="/assets/business-logo.webp" alt="London Tour" class="logo" /><p class="footer-description">Discover the magic of London with expertly guided tours. Experience iconic landmarks, hidden gems, and unforgettable memories.</p><div class="social-links"><a href="[facebook_handle]" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a><a href="[instagram_handle]" aria-label="Instagram"><i class="fab fa-instagram"></i></a><a href="[whatsapp_handle]" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a></div></div><div class="footer-column"><h3 class="footer-heading">Quick Links</h3><ul class="footer-links"><li><a href="/tours">Tours</a></li><li><a href="/about">About</a></li><li><a href="/contact">Contact</a></li></ul></div><div class="footer-column"><h3 class="footer-heading">Contact Us</h3><ul class="footer-contact"><li><i class="fas fa-envelope"></i><a href="mailto:[business_email]">[business_email]</a></li><li><i class="fas fa-phone"></i><a href="tel:[business_phone]">[business_phone]</a></li><li><a href="/tours"><i class="fas fa-map-marker-alt"></i><span>[business_address]</span></a></li></ul></div><div class="footer-column"><h3 class="footer-heading">Legal</h3><ul class="footer-links"><li><a href="/privacy">Privacy Policy</a></li><li><a href="/terms">Terms &amp; Conditions</a></li><li><a href="/accessibility">Accessibility</a></li></ul></div></div><div class="footer-bottom"><p class="copyright">© 2026 London Tour. All rights reserved.</p><a href="https://zappy5.com" target="_blank" class="zappy-attribution">Generated by Zappy</a></div></div></footer>
+  <footer class="site-footer"><div class="footer-container"><div class="footer-content"><div class="footer-column footer-about"><img src="/assets/business-logo.webp" alt="London Tour" class="logo" data-i18n-alt="home_alt_93"><p class="footer-description" data-i18n="home_p_56">Discover the magic of London with expertly guided tours. Experience iconic landmarks, hidden gems, and unforgettable memories.</p><div class="social-links"><a href="[facebook_handle]" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a><a href="[instagram_handle]" aria-label="Instagram"><i class="fab fa-instagram"></i></a><a href="[whatsapp_handle]" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a></div></div><div class="footer-column"><h3 class="footer-heading" data-i18n="home_h3_17">Quick Links</h3><ul class="footer-links"><li data-i18n="home_li_75"><a href="/tours" data-i18n="home_link_65">Tours</a></li><li data-i18n="home_li_76"><a href="/about" data-i18n="home_link_66">About</a></li><li data-i18n="home_li_77"><a href="/contact" data-i18n="home_link_67">Contact</a></li></ul></div><div class="footer-column"><h3 class="footer-heading" data-i18n="home_h3_18">Contact Us</h3><ul class="footer-contact"><li data-i18n="home_li_78"><i class="fas fa-envelope"></i><a href="mailto:[business_email]" data-i18n="home_link_68">[business_email]</a></li><li data-i18n="home_li_79"><i class="fas fa-phone"></i><a href="tel:[business_phone]" data-i18n="home_link_69">[business_phone]</a></li><li data-i18n="home_li_80"><a href="/tours" data-i18n="home_link_70"><i class="fas fa-map-marker-alt"></i><span data-i18n="home_span_59">[business_address]</span></a></li></ul></div><div class="footer-column"><h3 class="footer-heading" data-i18n="home_h3_19">Legal</h3><ul class="footer-links"><li data-i18n="home_li_81"><a href="/privacy" data-i18n="home_link_71">Privacy Policy</a></li><li data-i18n="home_li_82"><a href="/terms" data-i18n="home_link_72">Terms &amp; Conditions</a></li><li data-i18n="home_li_83"><a href="/accessibility" data-i18n="home_link_73">Accessibility</a></li></ul></div></div><div class="footer-bottom"><p class="copyright" data-i18n="home_p_57">© 2026 London Tour. All rights reserved.</p><a href="https://zappy5.com" target="_blank" class="zappy-attribution" data-i18n="home_link_74">Generated by Zappy</a></div></div></footer>
   
   <a href="https://wa.me/[whatsapp_handle]" class="whatsapp-float" aria-label="WhatsApp">
     <i class="fab fa-whatsapp"></i>
@@ -1116,6 +1719,2176 @@
 </script>
     <div data-integration="accessibility:toolbar"></div>
 
+<!-- i18next Multi-Language Support -->
+<script>
+(function() {
+  // Language resources (inline to avoid CDN dependency)
+  const resources = {
+  "en": {
+    "translation": {
+      "home_h1_1": "Night Tours, Neon Streets, Real Bites",
+      "home_h2_2": "Choose Your Night",
+      "home_h2_3": "A Route That Moves Like Music",
+      "home_h2_4": "What Guests Remember",
+      "home_h2_5": "Ready for a Night That Plans Itself?",
+      "home_h3_6": "Neon Bites in Soho",
+      "home_h3_7": "Riverside Lights + Late Plates",
+      "home_h3_8": "Markets After Dark",
+      "home_h3_9": "First Taste",
+      "home_p_20": "Happily created by Zappy",
+      "home_p_21": "Explore iconic city lights with a guide who knows the hidden kitchens, late-night classics, and the best glow-on-the-river views.",
+      "home_p_22": "Duration: 2.5–3 hours",
+      "home_p_23": "Stops: 5–7 tastings",
+      "home_p_24": "Dietary options: available with notice",
+      "home_p_25": "Best for: first-timers",
+      "home_p_26": "Tastings: street-to-speakeasy",
+      "home_p_27": "Pace: lively",
+      "home_p_28": "Best for: skyline lovers",
+      "home_p_29": "Stops: river views + classic bites",
+      "home_p_30": "Finish: photo-worthy bridge",
+      "home_p_31": "Best for: food explorers",
+      "home_p_32": "Focus: local favorites",
+      "home_p_33": "Notes: vegetarian-friendly route",
+      "home_p_34": "Short walks, big flavors, and timed viewpoints—so you see the city at its brightest without feeling rushed.",
+      "home_p_35": "Warm-up bite near buzzing side streets.",
+      "home_p_36": "A classic spot under glowing signage.",
+      "home_p_37": "Small venue, big signature dish.",
+      "home_p_38": "Quick tastings with local chatter.",
+      "home_p_39": "Finish with lights on the water.",
+      "home_p_40": "Fast pacing, clear meeting points, and the kind of food you only find when someone local takes you.",
+      "home_p_41": "\"Every stop felt intentional—zero tourist traps.\"",
+      "home_p_42": "Sarah M. · Evening Food Tour",
+      "home_p_43": "\"Perfect balance of walking, bites, and skyline moments.\"",
+      "home_p_44": "James K. · Tower of London Tour",
+      "home_p_45": "\"The guide's timing with the city lights was unreal.\"",
+      "home_p_46": "Emma L. · Night Lights Experience",
+      "home_p_47": "\"Best evening we had—simple to join, easy to follow.\"",
+      "home_p_48": "David R. · Historic Pub Walk",
+      "home_p_49": "tastings per tour",
+      "home_p_50": "typical duration",
+      "home_p_51": "group sizes",
+      "home_p_52": "Tell us your date range and dietary needs—we'll reply with the best route options.",
+      "home_p_53": "Clear meeting point instructions",
+      "home_p_54": "Dietary options supported with notice",
+      "home_p_55": "Quick replies, simple coordination",
+      "home_p_56": "Discover the magic of London with expertly guided tours. Experience iconic landmarks, hidden gems, and unforgettable memories.",
+      "home_p_57": "© 2026 London Tour. All rights reserved.",
+      "about_h1_1": "We Guide the City After Dark",
+      "about_h2_2": "People Behind the Routes",
+      "about_h2_3": "What We Optimize For",
+      "about_h2_4": "Trusted for Night Experiences",
+      "about_h3_5": "Clear pacing",
+      "about_h3_6": "Real local spots",
+      "about_h3_7": "Night views on purpose",
+      "about_h3_8": "Lead Guide",
+      "about_h3_9": "Food Scout",
+      "about_p_18": "Happily created by Zappy",
+      "about_p_19": "My Business builds evening routes that feel effortless: the right streets, the right timing, and places worth tasting.",
+      "about_p_20": "We keep groups small, directions clear, and the night moving.",
+      "about_p_21": "A small team with big city knowledge—hospitality-first, detail-obsessed.",
+      "about_p_22": "Night route design, pacing, and storytelling.",
+      "about_p_23": "Finds the dishes that locals actually queue for.",
+      "about_p_24": "Coordinates details and supports dietary needs.",
+      "about_p_25": "Meeting points and next steps are always simple.",
+      "about_p_26": "Short walks, no dead time.",
+      "about_p_27": "Stops are chosen for taste and atmosphere.",
+      "about_p_28": "We plan for weather, crowds, and easy navigation.",
+      "about_p_29": "We design routes that photograph well and feel even better in person.",
+      "about_p_30": "\"A confident guide to the city's late-night energy.\"",
+      "about_p_31": "\"A fast, premium way to taste neighborhoods.\"",
+      "about_p_32": "\"Exceptional timing for iconic lights.\"",
+      "about_p_33": "\"Small-group feel with big-city impact.\"",
+      "about_p_34": "For collaborations and private groups, reach out anytime.",
+      "about_p_35": "Discover the magic of London with expertly guided tours. Experience iconic landmarks, hidden gems, and unforgettable memories.",
+      "about_p_36": "© 2026 London Tour. All rights reserved.",
+      "home_h3_10": "Neon Corner",
+      "home_h3_11": "Hidden Kitchen",
+      "home_h3_12": "Night Market Moment",
+      "home_h3_13": "Final View",
+      "home_h3_14": "5–7",
+      "home_h3_15": "2.5–3h",
+      "home_h3_16": "Small",
+      "home_h3_17": "Quick Links",
+      "home_h3_18": "Contact Us",
+      "home_h3_19": "Legal",
+      "home_li_75": "Tours",
+      "home_li_76": "About",
+      "home_li_77": "Contact",
+      "home_li_78": "[business_email]",
+      "home_li_79": "[business_phone]",
+      "home_li_80": "[business_address]",
+      "home_li_81": "Privacy Policy",
+      "home_li_82": "Terms & Conditions",
+      "home_li_83": "Accessibility",
+      "terms_h1_1": "Terms of Use",
+      "terms_h2_2": "1. Definitions",
+      "terms_h2_3": "2. Description of Services",
+      "terms_h2_4": "3. Terms of Use",
+      "terms_h2_5": "4. User Obligations",
+      "terms_h2_6": "5. Payment and Refund Policy",
+      "terms_h2_7": "6. Limitation of Liability",
+      "terms_h2_8": "7. Copyright and Intellectual Property",
+      "terms_h2_9": "8. Privacy",
+      "terms_p_18": "London Tour provides tourism through the site. The services are subject to the terms \n            detailed in this document and may change from time to time.",
+      "terms_p_19": "Use of the site is conditional on compliance with the following terms:",
+      "terms_p_20": "If services include payment:",
+      "terms_p_21": "Services are provided \"as is\" without warranty of any kind. The Company will not be liable for indirect, \n            consequential, or special damages arising from use of the site, except where required by law.",
+      "terms_p_22": "All content on the site, including text, images, design, and code, is protected by copyright owned by London Tour. \n            Reproduction, distribution, or commercial use of content is prohibited without written permission.",
+      "terms_p_23": "Collection and use of personal information is subject to our Privacy Policy. Use of the site constitutes \n            agreement to the Privacy Policy as detailed separately.",
+      "terms_p_24": "The Company may change these terms of use at any time. Material changes will be posted on the site with \n            30 days advance notice. Continued use after changes constitutes agreement to the new terms.",
+      "terms_p_25": "The Company may suspend or limit service at any time, including in cases of terms of use violations. \n            In case of service termination, relevant provisions will remain in effect.",
+      "terms_p_26": "These terms of use are governed by applicable laws. Any disputes will be resolved in accordance with \n            local jurisdiction, with preference given to arbitration or mediation where possible.",
+      "terms_p_27": "For questions or clarifications regarding the terms of use:",
+      "terms_p_28": "Discover the magic of London with expertly guided tours. Experience iconic landmarks, hidden gems, and unforgettable memories.",
+      "terms_p_29": "© 2026 London Tour. All rights reserved.",
+      "tours_h1_1": "Tours Built for City Lights",
+      "tours_h2_2": "How the Night Flows",
+      "tours_h2_3": "Good to Know",
+      "tours_h3_4": "Neon Bites in Soho",
+      "tours_h3_5": "Riverside Lights + Late Plates",
+      "tours_h3_6": "Markets After Dark",
+      "tours_h3_7": "Landmarks + Late Snacks",
+      "tours_h3_8": "Chinatown Night Flavors",
+      "tours_h3_9": "West End Pre-Show Bites",
+      "tours_p_23": "Happily created by Zappy",
+      "tours_p_24": "Choose a route by vibe—neon streets, riverside glow, or after-dark markets. All tours are designed for easy pacing and clear meetups.",
+      "tours_p_25": "Duration: ~3 hours",
+      "tours_p_26": "Stops: 5–7",
+      "tours_p_27": "Ideal for: couples, friends, solo adventurers",
+      "tours_p_28": "Duration: ~3 hours",
+      "tours_p_29": "Stops: 6–7",
+      "tours_p_30": "Ideal for: couples, small groups",
+      "tours_p_31": "Duration: ~3 hours",
+      "tours_p_32": "Stops: 5–6",
+      "tours_p_33": "Ideal for: friends, foodies, solo explorers",
+      "tours_p_34": "Duration: ~3 hours",
+      "tours_p_35": "Stops: 6–7",
+      "tours_p_36": "Ideal for: tourists, couples, families",
+      "tours_p_37": "Duration: ~3 hours",
+      "tours_p_38": "Stops: 5–7",
+      "tours_p_39": "Ideal for: food lovers, friends, solo diners",
+      "tours_p_40": "Duration: ~3 hours",
+      "tours_p_41": "Stops: 5–6",
+      "tours_p_42": "Ideal for: theatre-goers, couples, culture enthusiasts",
+      "tours_p_43": "Private tour guide options and custom itineraries available—message us to arrange your perfect London evening.",
+      "tours_p_44": "Quick introductions and the first bite within 10 minutes.",
+      "tours_p_45": "3–4 stops with short walks between.",
+      "tours_p_46": "Timed viewpoint for photos and skyline.",
+      "tours_p_47": "A satisfying finish with clear directions onward.",
+      "tours_p_48": "Comfortable pace with short walks between stops.",
+      "tours_p_49": "Yes—share details in advance and we'll match the route.",
+      "tours_p_50": "Tours run rain-ready; bring a light layer.",
+      "tours_p_51": "Yes—small groups make it easy.",
+      "tours_p_52": "Exact meetup details are sent after confirmation.",
+      "tours_p_53": "Yes—message us with your preferred date range.",
+      "tours_p_54": "Discover the magic of London with expertly guided tours. Experience iconic landmarks, hidden gems, and unforgettable memories.",
+      "tours_p_55": "© 2026 London Tour. All rights reserved.",
+      "about_h3_10": "Guest Care",
+      "about_h3_11": "Clarity",
+      "about_h3_12": "Momentum",
+      "about_h3_13": "Quality",
+      "about_h3_14": "Comfort",
+      "about_h3_15": "Quick Links",
+      "about_h3_16": "Contact Us",
+      "about_h3_17": "Legal",
+      "about_li_49": "Tours",
+      "about_li_50": "About",
+      "about_li_51": "Contact",
+      "about_li_52": "[business_email]",
+      "about_li_53": "[business_phone]",
+      "about_li_54": "[business_address]",
+      "about_li_55": "Privacy Policy",
+      "about_li_56": "Terms & Conditions",
+      "about_li_57": "Accessibility",
+      "home_alt_87": "London Tour",
+      "home_alt_88": "London streets at night with neon reflections and iconic landmarks",
+      "home_alt_89": "Neon-lit Soho street at night with food vendors",
+      "home_alt_90": "Thames riverside at night with illuminated bridges and skyline",
+      "home_alt_91": "London street food market illuminated at night",
+      "home_alt_92": "London night cityscape with illuminated landmarks",
+      "home_alt_93": "London Tour",
+      "home_nav_84": "Tours",
+      "home_nav_85": "About",
+      "home_nav_86": "Contact",
+      "terms_h2_10": "9. Changes to Terms of Use",
+      "terms_h2_11": "10. Service Termination",
+      "terms_h2_12": "11. Governing Law and Dispute Resolution",
+      "terms_h2_13": "12. General Provisions",
+      "terms_h2_14": "13. Contact Information",
+      "terms_h3_15": "Quick Links",
+      "terms_h3_16": "Contact Us",
+      "terms_h3_17": "Legal",
+      "terms_li_42": "\"Company\" - London Tour",
+      "terms_li_43": "\"User\" - Anyone who browses or uses the site",
+      "terms_li_44": "\"Services\" - tourism provided through the site",
+      "terms_li_45": "Use of the site for lawful purposes only",
+      "terms_li_46": "No interference with site operations or other users",
+      "terms_li_47": "No uploading of offensive, illegal, or harmful content",
+      "terms_li_48": "Respect for copyright and intellectual property rights",
+      "terms_li_49": "No actions that may compromise site security",
+      "terms_li_50": "Providing accurate and truthful information during registration or ordering",
+      "terms_li_51": "Maintaining confidentiality of account access details",
+      "terms_li_52": "Immediate notification of any unauthorized account use",
+      "terms_li_53": "Updating personal information as needed",
+      "terms_li_54": "Payments are processed through secure and encrypted systems",
+      "terms_li_55": "Prices include applicable taxes as required by law",
+      "terms_li_56": "Right to cancel will be in accordance with consumer protection laws",
+      "terms_li_57": "Refunds will be processed within 14 business days of cancellation approval",
+      "terms_li_58": "If any portion of the terms is found invalid, remaining terms will remain in effect",
+      "terms_li_59": "Non-enforcement of a right will not be considered a waiver",
+      "terms_li_60": "These terms of use constitute the entire agreement between the parties",
+      "terms_li_61": "Company: London Tour",
+      "terms_li_62": "Email: info@company.com",
+      "terms_li_63": "Phone: 03-1234567",
+      "terms_li_64": "Address: כתובת החברה, ישראל",
+      "terms_li_65": "Tours",
+      "terms_li_66": "About",
+      "terms_li_67": "Contact",
+      "terms_li_68": "[business_email]",
+      "terms_li_69": "[business_phone]",
+      "terms_li_70": "[business_address]",
+      "terms_li_71": "Privacy Policy",
+      "terms_li_72": "Terms & Conditions",
+      "terms_li_73": "Accessibility",
+      "tours_h3_10": "Meet + Warm-Up",
+      "tours_h3_11": "Core Tastings",
+      "tours_h3_12": "Iconic Lights",
+      "tours_h3_13": "Final Stop",
+      "tours_h3_14": "Is it a lot of walking?",
+      "tours_h3_15": "Can you handle dietary needs?",
+      "tours_h3_16": "What if it rains?",
+      "tours_h3_17": "Is it suitable for solo travelers?",
+      "tours_h3_18": "Where do we meet?",
+      "tours_h3_19": "Can I request a private tour?",
+      "tours_h3_20": "Quick Links",
+      "tours_h3_21": "Contact Us",
+      "tours_h3_22": "Legal",
+      "tours_li_70": "Tours",
+      "tours_li_71": "About",
+      "tours_li_72": "Contact",
+      "tours_li_73": "[business_email]",
+      "tours_li_74": "[business_phone]",
+      "tours_li_75": "[business_address]",
+      "tours_li_76": "Privacy Policy",
+      "tours_li_77": "Terms & Conditions",
+      "tours_li_78": "Accessibility",
+      "about_alt_61": "London Tour",
+      "about_alt_62": "London tour guide leading evening walking tour through illuminated city streets",
+      "about_alt_63": "Lead Tour Guide - London Tour expert",
+      "about_alt_64": "Food Scout - London culinary expert",
+      "about_alt_65": "Guest Care - London Tour customer service specialist",
+      "about_alt_66": "London night skyline panorama",
+      "about_alt_67": "London nightlife scene with crowds enjoying evening atmosphere",
+      "about_alt_68": "London Tour",
+      "about_nav_58": "Tours",
+      "about_nav_59": "About",
+      "about_nav_60": "Contact",
+      "contact_h1_1": "Message Us to Plan Your Night",
+      "contact_h2_2": "Send a Message",
+      "contact_h2_3": "Meetups Made Simple",
+      "contact_h3_4": "Email",
+      "contact_h3_5": "Phone",
+      "contact_h3_6": "Response Time",
+      "contact_h3_7": "Quick Links",
+      "contact_h3_8": "Contact Us",
+      "contact_h3_9": "Legal",
+      "contact_p_10": "Happily created by Zappy",
+      "contact_p_11": "Send your preferred date range, group size, and any dietary notes. We'll reply with the best-fit route.",
+      "contact_p_12": "[business_email]",
+      "contact_p_13": "[business_phone]",
+      "contact_p_14": "Typically within 24 hours",
+      "contact_p_15": "Tell us what kind of night you want—neon streets, riverside lights, or markets.",
+      "contact_p_16": "By sending this message, you agree to be contacted about your request.",
+      "contact_p_17": "We share a precise meetup point and a short, easy-to-follow route summary.",
+      "contact_p_18": "If you're unsure which area fits your night, message us and we'll recommend the best starting neighborhood.",
+      "contact_p_19": "Discover the magic of London with expertly guided tours. Experience iconic landmarks, hidden gems, and unforgettable memories.",
+      "contact_p_20": "© 2026 London Tour. All rights reserved.",
+      "home_link_60": "Zappy",
+      "home_link_61": "Check Availability",
+      "home_link_62": "Ask a Question",
+      "home_link_63": "Message Us to Reserve",
+      "home_link_64": "Contact My Business",
+      "home_link_65": "Tours",
+      "home_link_66": "About",
+      "home_link_67": "Contact",
+      "home_link_68": "[business_email]",
+      "home_link_69": "[business_phone]",
+      "home_link_70": "[business_address]",
+      "home_link_71": "Privacy Policy",
+      "home_link_72": "Terms & Conditions",
+      "home_link_73": "Accessibility",
+      "home_link_74": "Generated by Zappy",
+      "home_span_58": "Real Bites",
+      "home_span_59": "[business_address]",
+      "privacy_h1_1": "Privacy Policy",
+      "privacy_h2_2": "1. Information Collection",
+      "privacy_h2_3": "2. Use of Information",
+      "privacy_h2_4": "3. Information Sharing",
+      "privacy_h2_5": "4. User Rights",
+      "privacy_h2_6": "5. Cookies",
+      "privacy_h2_7": "6. Information Security",
+      "privacy_h2_8": "7. Policy Changes",
+      "privacy_h2_9": "8. Contact Information",
+      "privacy_p_13": "London Tour (\"Company\", \"we\", \"our\") is committed to protecting your privacy. This privacy policy explains how we collect, \n            use and protect your information when you use our website www.company.com (\"Service\").",
+      "privacy_p_14": "We may collect the following types of information:",
+      "privacy_p_15": "We use the collected information for the following purposes:",
+      "privacy_p_16": "We do not sell, rent or share your personal information with third parties, except in the following cases:",
+      "privacy_p_17": "In accordance with Israeli Privacy Protection Law 1981, you have the following rights:",
+      "privacy_p_18": "Our website uses cookies to improve user experience. You can manage cookies through your browser settings. \n            Disabling cookies may affect website functionality.",
+      "privacy_p_19": "We implement reasonable security measures to protect your information, including encryption, firewalls and restricted access control. \n            However, no transmission or storage method is 100% secure.",
+      "privacy_p_20": "We may update this privacy policy from time to time. Material changes will be posted on the website with 30 days advance notice.",
+      "privacy_p_21": "For questions or requests regarding this privacy policy, please contact us:",
+      "privacy_p_22": "Data Protection Authority: For complaints, you may contact the Data Protection Authority at the Ministry of Justice",
+      "privacy_p_23": "Discover the magic of London with expertly guided tours. Experience iconic landmarks, hidden gems, and unforgettable memories.",
+      "privacy_p_24": "© 2026 London Tour. All rights reserved.",
+      "terms_alt_77": "London Tour",
+      "terms_alt_78": "London Tour",
+      "terms_nav_74": "Tours",
+      "terms_nav_75": "About",
+      "terms_nav_76": "Contact",
+      "tours_alt_82": "London Tour",
+      "tours_alt_83": "London evening tour with illuminated city landmarks and vibrant nightlife",
+      "tours_alt_84": "Neon Bites in Soho night tour",
+      "tours_alt_85": "Riverside Lights and Late Plates tour",
+      "tours_alt_86": "Markets After Dark tour",
+      "tours_alt_87": "Landmarks and Late Snacks tour",
+      "tours_alt_88": "Chinatown Night Flavors tour",
+      "tours_alt_89": "West End Pre-Show Bites tour",
+      "tours_alt_90": "London evening food tour with iconic city lights",
+      "tours_alt_91": "London skyline viewpoint on night tour",
+      "tours_alt_92": "London Tour",
+      "tours_nav_79": "Tours",
+      "tours_nav_80": "About",
+      "tours_nav_81": "Contact",
+      "about_link_38": "Zappy",
+      "about_link_39": "Tours",
+      "about_link_40": "About",
+      "about_link_41": "Contact",
+      "about_link_42": "[business_email]",
+      "about_link_43": "[business_phone]",
+      "about_link_44": "[business_address]",
+      "about_link_45": "Privacy Policy",
+      "about_link_46": "Terms & Conditions",
+      "about_link_47": "Accessibility",
+      "about_link_48": "Generated by Zappy",
+      "about_span_37": "[business_address]",
+      "contact_li_41": "Tours",
+      "contact_li_42": "About",
+      "contact_li_43": "Contact",
+      "contact_li_44": "[business_email]",
+      "contact_li_45": "[business_phone]",
+      "contact_li_46": "[business_address]",
+      "contact_li_47": "Privacy Policy",
+      "contact_li_48": "Terms & Conditions",
+      "contact_li_49": "Accessibility",
+      "privacy_h3_10": "Quick Links",
+      "privacy_h3_11": "Contact Us",
+      "privacy_h3_12": "Legal",
+      "privacy_li_37": "Personal Information: Name, email address, phone number and address",
+      "privacy_li_38": "Technical Information: IP address, browser type, operating system and website usage data",
+      "privacy_li_39": "Cookies: Information stored on your computer to improve user experience",
+      "privacy_li_40": "Providing requested services",
+      "privacy_li_41": "Improving service and user experience",
+      "privacy_li_42": "Contacting you regarding our services",
+      "privacy_li_43": "Compliance with legal requirements",
+      "privacy_li_44": "With your explicit consent",
+      "privacy_li_45": "When required by law",
+      "privacy_li_46": "To protect our rights or user safety",
+      "privacy_li_47": "With service providers who assist in operating the service (under confidentiality agreements)",
+      "privacy_li_48": "Right to access personal information stored about you",
+      "privacy_li_49": "Right to correct inaccurate or incomplete information",
+      "privacy_li_50": "Right to delete personal information in certain circumstances",
+      "privacy_li_51": "Right to object to information processing for marketing purposes",
+      "privacy_li_52": "Right to file a complaint with the Data Protection Authority",
+      "privacy_li_53": "Company: London Tour",
+      "privacy_li_54": "Email: info@company.com",
+      "privacy_li_55": "Phone: 03-1234567",
+      "privacy_li_56": "Address: כתובת החברה, ישראל",
+      "privacy_li_57": "Tours",
+      "privacy_li_58": "About",
+      "privacy_li_59": "Contact",
+      "privacy_li_60": "[business_email]",
+      "privacy_li_61": "[business_phone]",
+      "privacy_li_62": "[business_address]",
+      "privacy_li_63": "Privacy Policy",
+      "privacy_li_64": "Terms & Conditions",
+      "privacy_li_65": "Accessibility",
+      "terms_link_31": "info@company.com",
+      "terms_link_32": "Tours",
+      "terms_link_33": "About",
+      "terms_link_34": "Contact",
+      "terms_link_35": "[business_email]",
+      "terms_link_36": "[business_phone]",
+      "terms_link_37": "[business_address]",
+      "terms_link_38": "Privacy Policy",
+      "terms_link_39": "Terms & Conditions",
+      "terms_link_40": "Accessibility",
+      "terms_link_41": "Generated by Zappy",
+      "terms_span_30": "[business_address]",
+      "tours_link_57": "Zappy",
+      "tours_link_58": "Ask About Dates",
+      "tours_link_59": "Contact for Details",
+      "tours_link_60": "Tours",
+      "tours_link_61": "About",
+      "tours_link_62": "Contact",
+      "tours_link_63": "[business_email]",
+      "tours_link_64": "[business_phone]",
+      "tours_link_65": "[business_address]",
+      "tours_link_66": "Privacy Policy",
+      "tours_link_67": "Terms & Conditions",
+      "tours_link_68": "Accessibility",
+      "tours_link_69": "Generated by Zappy",
+      "tours_span_56": "[business_address]",
+      "contact_alt_54": "London Tour",
+      "contact_alt_55": "Tourist using phone to plan London night tour",
+      "contact_alt_56": "Stylized night map of London showing tour meetup routes",
+      "contact_alt_57": "London Tour",
+      "contact_btn_36": "Send",
+      "contact_nav_50": "Tours",
+      "contact_nav_51": "About",
+      "contact_nav_52": "Contact",
+      "privacy_alt_69": "London Tour",
+      "privacy_alt_70": "London Tour",
+      "privacy_nav_66": "Tours",
+      "privacy_nav_67": "About",
+      "privacy_nav_68": "Contact",
+      "contact_link_22": "Zappy",
+      "contact_link_23": "Go to Message Form",
+      "contact_link_24": "See Tours",
+      "contact_link_25": "Browse Tours",
+      "contact_link_26": "Tours",
+      "contact_link_27": "About",
+      "contact_link_28": "Contact",
+      "contact_link_29": "[business_email]",
+      "contact_link_30": "[business_phone]",
+      "contact_link_31": "[business_address]",
+      "contact_link_32": "Privacy Policy",
+      "contact_link_33": "Terms & Conditions",
+      "contact_link_34": "Accessibility",
+      "contact_link_35": "Generated by Zappy",
+      "contact_span_21": "[business_address]",
+      "home_page_title": "Home - London Tour",
+      "privacy_link_26": "info@company.com",
+      "privacy_link_27": "Tours",
+      "privacy_link_28": "About",
+      "privacy_link_29": "Contact",
+      "privacy_link_30": "[business_email]",
+      "privacy_link_31": "[business_phone]",
+      "privacy_link_32": "[business_address]",
+      "privacy_link_33": "Privacy Policy",
+      "privacy_link_34": "Terms & Conditions",
+      "privacy_link_35": "Accessibility",
+      "privacy_link_36": "Generated by Zappy",
+      "privacy_span_25": "[business_address]",
+      "about_page_title": "About - London Tour",
+      "contact_label_37": "Name",
+      "contact_label_38": "Email",
+      "contact_label_39": "Phone",
+      "contact_label_40": "Message",
+      "legal_terms_h1_1": "Terms of Use",
+      "legal_terms_h2_2": "1. Definitions",
+      "legal_terms_h2_3": "2. Description of Services",
+      "legal_terms_h2_4": "3. Terms of Use",
+      "legal_terms_h2_5": "4. User Obligations",
+      "legal_terms_h2_6": "5. Payment and Refund Policy",
+      "legal_terms_h2_7": "6. Limitation of Liability",
+      "legal_terms_h2_8": "7. Copyright and Intellectual Property",
+      "legal_terms_h2_9": "8. Privacy",
+      "legal_terms_p_15": "[business_name] provides general services through the site. The services are subject to the terms \n            detailed in this document and may change from time to time.",
+      "legal_terms_p_16": "Use of the site is conditional on compliance with the following terms:",
+      "legal_terms_p_17": "If services include payment:",
+      "legal_terms_p_18": "Services are provided \"as is\" without warranty of any kind. The Company will not be liable for indirect, \n            consequential, or special damages arising from use of the site, except where required by law.",
+      "legal_terms_p_19": "All content on the site, including text, images, design, and code, is protected by copyright owned by [business_name]. \n            Reproduction, distribution, or commercial use of content is prohibited without written permission.",
+      "legal_terms_p_20": "Collection and use of personal information is subject to our Privacy Policy. Use of the site constitutes \n            agreement to the Privacy Policy as detailed separately.",
+      "legal_terms_p_21": "The Company may change these terms of use at any time. Material changes will be posted on the site with \n            30 days advance notice. Continued use after changes constitutes agreement to the new terms.",
+      "legal_terms_p_22": "The Company may suspend or limit service at any time, including in cases of terms of use violations. \n            In case of service termination, relevant provisions will remain in effect.",
+      "legal_terms_p_23": "These terms of use are governed by applicable laws. Any disputes will be resolved in accordance with \n            local jurisdiction, with preference given to arbitration or mediation where possible.",
+      "legal_terms_p_24": "For questions or clarifications regarding the terms of use:",
+      "terms_page_title": "Terms & Conditions",
+      "tours_page_title": "Tours - London Tour",
+      "legal_terms_h2_10": "9. Changes to Terms of Use",
+      "legal_terms_h2_11": "10. Service Termination",
+      "legal_terms_h2_12": "11. Governing Law and Dispute Resolution",
+      "legal_terms_h2_13": "12. General Provisions",
+      "legal_terms_h2_14": "13. Contact Information",
+      "legal_terms_li_28": "\"Company\" - [business_name]",
+      "legal_terms_li_29": "\"User\" - Anyone who browses or uses the site",
+      "legal_terms_li_30": "\"Services\" - general services provided through the site",
+      "legal_terms_li_31": "Use of the site for lawful purposes only",
+      "legal_terms_li_32": "No interference with site operations or other users",
+      "legal_terms_li_33": "No uploading of offensive, illegal, or harmful content",
+      "legal_terms_li_34": "Respect for copyright and intellectual property rights",
+      "legal_terms_li_35": "No actions that may compromise site security",
+      "legal_terms_li_36": "Providing accurate and truthful information during registration or ordering",
+      "legal_terms_li_37": "Maintaining confidentiality of account access details",
+      "legal_terms_li_38": "Immediate notification of any unauthorized account use",
+      "legal_terms_li_39": "Updating personal information as needed",
+      "legal_terms_li_40": "Payments are processed through secure and encrypted systems",
+      "legal_terms_li_41": "Prices include applicable taxes as required by law",
+      "legal_terms_li_42": "Right to cancel will be in accordance with consumer protection laws",
+      "legal_terms_li_43": "Refunds will be processed within 14 business days of cancellation approval",
+      "legal_terms_li_44": "If any portion of the terms is found invalid, remaining terms will remain in effect",
+      "legal_terms_li_45": "Non-enforcement of a right will not be considered a waiver",
+      "legal_terms_li_46": "These terms of use constitute the entire agreement between the parties",
+      "legal_terms_li_47": "Company: [business_name]",
+      "legal_terms_li_48": "Email: [business_email]",
+      "legal_terms_li_49": "Phone: [business_phone]",
+      "legal_terms_li_50": "Address: [business_address]",
+      "accessibility_h1_1": "Accessibility Statement",
+      "accessibility_h2_2": "1. Accessibility Policy",
+      "accessibility_h2_3": "2. Accessibility Arrangements on the Site",
+      "accessibility_h2_4": "3. Supported Assistive Technologies",
+      "accessibility_h2_5": "4. Accessibility Testing",
+      "accessibility_h2_6": "5. Continuous Improvements",
+      "accessibility_h2_7": "6. Contact and Feedback",
+      "accessibility_h3_8": "WCAG 2.1 Compliance",
+      "accessibility_h3_9": "Quick Links",
+      "accessibility_p_12": "London Tour is committed to making our services accessible to all users. We strive to implement \n            the Israeli Standard (TI 5568) based on WCAG 2.1 Level AA guidelines.",
+      "accessibility_p_13": "We believe in equal rights and the right of every person to receive information and services \n            independently and equally. This website was designed and built with special emphasis on \n            accessibility for people with disabilities.",
+      "accessibility_p_14": "The website complies with WCAG 2.1 Level AA, which includes:",
+      "accessibility_p_15": "The website has been tested using:",
+      "accessibility_p_16": "We are continuously working to improve the accessibility of our website and update it according \n            to technological developments and user feedback.",
+      "accessibility_p_17": "If you encounter an accessibility issue on the site or need assistance, please contact us:",
+      "accessibility_p_18": "Response time: We respond to accessibility inquiries within 3 business days and work to resolve issues within 10 business days.",
+      "accessibility_p_19": "Discover the magic of London with expertly guided tours. Experience iconic landmarks, hidden gems, and unforgettable memories.",
+      "accessibility_p_20": "© 2026 London Tour. All rights reserved.",
+      "contact_page_title": "Contact - London Tour",
+      "legal_privacy_h1_1": "Privacy Policy",
+      "legal_privacy_h2_2": "1. Information Collection",
+      "legal_privacy_h2_3": "2. Use of Information",
+      "legal_privacy_h2_4": "3. Information Sharing",
+      "legal_privacy_h2_5": "4. User Rights",
+      "legal_privacy_h2_6": "5. Cookies",
+      "legal_privacy_h2_7": "6. Information Security",
+      "legal_privacy_h2_8": "7. Policy Changes",
+      "legal_privacy_h2_9": "8. Contact Information",
+      "legal_privacy_p_10": "[business_name] (\"Company\", \"we\", \"our\") is committed to protecting your privacy. This privacy policy explains how we collect, \n            use and protect your information when you use our website www.company.com (\"Service\").",
+      "legal_privacy_p_11": "We may collect the following types of information:",
+      "legal_privacy_p_12": "We use the collected information for the following purposes:",
+      "legal_privacy_p_13": "We do not sell, rent or share your personal information with third parties, except in the following cases:",
+      "legal_privacy_p_14": "In accordance with Israeli Privacy Protection Law 1981, you have the following rights:",
+      "legal_privacy_p_15": "Our website uses cookies to improve user experience. You can manage cookies through your browser settings. \n            Disabling cookies may affect website functionality.",
+      "legal_privacy_p_16": "We implement reasonable security measures to protect your information, including encryption, firewalls and restricted access control. \n            However, no transmission or storage method is 100% secure.",
+      "legal_privacy_p_17": "We may update this privacy policy from time to time. Material changes will be posted on the website with 30 days advance notice.",
+      "legal_privacy_p_18": "For questions or requests regarding this privacy policy, please contact us:",
+      "legal_privacy_p_19": "Data Protection Authority: For complaints, you may contact the Data Protection Authority at the Ministry of Justice",
+      "privacy_page_title": "Privacy Policy",
+      "accessibility_h3_10": "Contact Us",
+      "accessibility_h3_11": "Legal",
+      "accessibility_li_33": "Keyboard navigation support",
+      "accessibility_li_34": "Screen reader compatibility",
+      "accessibility_li_35": "Appropriate color contrast",
+      "accessibility_li_36": "Flexible and scalable font sizes",
+      "accessibility_li_37": "Descriptive image alt text",
+      "accessibility_li_38": "Hierarchical heading structure",
+      "accessibility_li_39": "Clear and descriptive links",
+      "accessibility_li_40": "Support for 200% zoom without content loss",
+      "accessibility_li_41": "Perceivable: Information is presented in ways users can perceive",
+      "accessibility_li_42": "Operable: Interface components are operable",
+      "accessibility_li_43": "Understandable: Information and user interface are understandable",
+      "accessibility_li_44": "Robust: Content can be interpreted by a variety of technologies",
+      "accessibility_li_45": "NVDA (Windows)",
+      "accessibility_li_46": "JAWS (Windows)",
+      "accessibility_li_47": "VoiceOver (Mac/iOS)",
+      "accessibility_li_48": "TalkBack (Android)",
+      "accessibility_li_49": "Dragon NaturallySpeaking",
+      "accessibility_li_50": "Switch navigation",
+      "accessibility_li_51": "Automated accessibility testing tools",
+      "accessibility_li_52": "Manual testing with screen readers",
+      "accessibility_li_53": "Keyboard-only navigation",
+      "accessibility_li_54": "Color contrast verification",
+      "accessibility_li_55": "Testing with users with disabilities",
+      "accessibility_li_56": "Company: London Tour",
+      "accessibility_li_57": "Email: info@company.com",
+      "accessibility_li_58": "Phone: 03-1234567",
+      "accessibility_li_59": "Tours",
+      "accessibility_li_60": "About",
+      "accessibility_li_61": "Contact",
+      "accessibility_li_62": "[business_email]",
+      "accessibility_li_63": "[business_phone]",
+      "accessibility_li_64": "[business_address]",
+      "accessibility_li_65": "Privacy Policy",
+      "accessibility_li_66": "Terms & Conditions",
+      "accessibility_li_67": "Accessibility",
+      "legal_privacy_li_23": "Personal Information: Name, email address, phone number and address",
+      "legal_privacy_li_24": "Technical Information: IP address, browser type, operating system and website usage data",
+      "legal_privacy_li_25": "Cookies: Information stored on your computer to improve user experience",
+      "legal_privacy_li_26": "Providing requested services",
+      "legal_privacy_li_27": "Improving service and user experience",
+      "legal_privacy_li_28": "Contacting you regarding our services",
+      "legal_privacy_li_29": "Compliance with legal requirements",
+      "legal_privacy_li_30": "With your explicit consent",
+      "legal_privacy_li_31": "When required by law",
+      "legal_privacy_li_32": "To protect our rights or user safety",
+      "legal_privacy_li_33": "With service providers who assist in operating the service (under confidentiality agreements)",
+      "legal_privacy_li_34": "Right to access personal information stored about you",
+      "legal_privacy_li_35": "Right to correct inaccurate or incomplete information",
+      "legal_privacy_li_36": "Right to delete personal information in certain circumstances",
+      "legal_privacy_li_37": "Right to object to information processing for marketing purposes",
+      "legal_privacy_li_38": "Right to file a complaint with the Data Protection Authority",
+      "legal_privacy_li_39": "Company: [business_name]",
+      "legal_privacy_li_40": "Email: [business_email]",
+      "legal_privacy_li_41": "Phone: [business_phone]",
+      "legal_privacy_li_42": "Address: [business_address]",
+      "legal_terms_link_25": "[business_email]",
+      "legal_terms_link_26": "[business_phone]",
+      "legal_terms_link_27": "← Back to site",
+      "accessibility_alt_71": "London Tour",
+      "accessibility_alt_72": "London Tour",
+      "accessibility_nav_68": "Tours",
+      "accessibility_nav_69": "About",
+      "accessibility_nav_70": "Contact",
+      "accessibility_link_22": "info@company.com",
+      "accessibility_link_23": "Tours",
+      "accessibility_link_24": "About",
+      "accessibility_link_25": "Contact",
+      "accessibility_link_26": "[business_email]",
+      "accessibility_link_27": "[business_phone]",
+      "accessibility_link_28": "[business_address]",
+      "accessibility_link_29": "Privacy Policy",
+      "accessibility_link_30": "Terms & Conditions",
+      "accessibility_link_31": "Accessibility",
+      "accessibility_link_32": "Generated by Zappy",
+      "accessibility_span_21": "[business_address]",
+      "home_meta_description": "Home - London Tour provides professional tourism services. Specializing in tower of london tour.",
+      "legal_privacy_link_20": "[business_email]",
+      "legal_privacy_link_21": "[business_phone]",
+      "legal_privacy_link_22": "← Back to Website",
+      "about_meta_description": "About - London Tour provides professional tourism services. Specializing in tower of london tour.",
+      "contact_placeholder_53": "[business_phone]",
+      "legal_terms_page_title": "Terms of Use - [business_name]",
+      "terms_meta_description": "Terms of service - user rights and obligations",
+      "tours_meta_description": "Tours - London Tour provides professional tourism services. Specializing in tower of london tour.",
+      "legal_accessibility_p_9": "[business_name] is committed to making our services accessible to all users. We strive to implement \n            the Israeli Standard (TI 5568) based on WCAG 2.1 Level AA guidelines.",
+      "accessibility_page_title": "Accessibility Statement",
+      "contact_meta_description": "Contact - London Tour provides professional tourism services. Specializing in tower of london tour.",
+      "legal_accessibility_h1_1": "Accessibility Statement",
+      "legal_accessibility_h2_2": "1. Accessibility Policy",
+      "legal_accessibility_h2_3": "2. Accessibility Arrangements on the Site",
+      "legal_accessibility_h2_4": "3. Supported Assistive Technologies",
+      "legal_accessibility_h2_5": "4. Accessibility Testing",
+      "legal_accessibility_h2_6": "5. Continuous Improvements",
+      "legal_accessibility_h2_7": "6. Contact and Feedback",
+      "legal_accessibility_h3_8": "WCAG 2.1 Compliance",
+      "legal_accessibility_p_10": "We believe in equal rights and the right of every person to receive information and services \n            independently and equally. This website was designed and built with special emphasis on \n            accessibility for people with disabilities.",
+      "legal_accessibility_p_11": "The website complies with WCAG 2.1 Level AA, which includes:",
+      "legal_accessibility_p_12": "The website has been tested using:",
+      "legal_accessibility_p_13": "We are continuously working to improve the accessibility of our website and update it according \n            to technological developments and user feedback.",
+      "legal_accessibility_p_14": "If you encounter an accessibility issue on the site or need assistance, please contact us:",
+      "legal_accessibility_p_15": "Response time: We respond to accessibility inquiries within 3 business days and work to resolve issues within 10 business days.",
+      "legal_privacy_page_title": "Privacy Policy - [business_name]",
+      "privacy_meta_description": "Our privacy policy - how we collect, use, and protect your information",
+      "legal_accessibility_li_19": "Keyboard navigation support",
+      "legal_accessibility_li_20": "Screen reader compatibility",
+      "legal_accessibility_li_21": "Appropriate color contrast",
+      "legal_accessibility_li_22": "Flexible and scalable font sizes",
+      "legal_accessibility_li_23": "Descriptive image alt text",
+      "legal_accessibility_li_24": "Hierarchical heading structure",
+      "legal_accessibility_li_25": "Clear and descriptive links",
+      "legal_accessibility_li_26": "Support for 200% zoom without content loss",
+      "legal_accessibility_li_27": "Perceivable: Information is presented in ways users can perceive",
+      "legal_accessibility_li_28": "Operable: Interface components are operable",
+      "legal_accessibility_li_29": "Understandable: Information and user interface are understandable",
+      "legal_accessibility_li_30": "Robust: Content can be interpreted by a variety of technologies",
+      "legal_accessibility_li_31": "NVDA (Windows)",
+      "legal_accessibility_li_32": "JAWS (Windows)",
+      "legal_accessibility_li_33": "VoiceOver (Mac/iOS)",
+      "legal_accessibility_li_34": "TalkBack (Android)",
+      "legal_accessibility_li_35": "Dragon NaturallySpeaking",
+      "legal_accessibility_li_36": "Switch navigation",
+      "legal_accessibility_li_37": "Automated accessibility testing tools",
+      "legal_accessibility_li_38": "Manual testing with screen readers",
+      "legal_accessibility_li_39": "Keyboard-only navigation",
+      "legal_accessibility_li_40": "Color contrast verification",
+      "legal_accessibility_li_41": "Testing with users with disabilities",
+      "legal_accessibility_li_42": "Company: [business_name]",
+      "legal_accessibility_li_43": "Email: [business_email]",
+      "legal_accessibility_li_44": "Phone: [business_phone]",
+      "legal_accessibility_link_16": "[business_email]",
+      "legal_accessibility_link_17": "[business_phone]",
+      "legal_accessibility_link_18": "← Back to site",
+      "accessibility_meta_description": "Our accessibility statement - our commitment to digital accessibility",
+      "legal_accessibility_page_title": "Accessibility Statement - [business_name]"
+    }
+  },
+  "he": {
+    "translation": {
+      "home_h1_1": "סיורי לילה, רחובות ניאון, טעמים אמיתיים",
+      "home_h2_2": "בחרו את הלילה שלכם",
+      "home_h2_3": "מסלול שזורם כמו מוזיקה",
+      "home_h2_4": "מה שהאורחים זוכרים",
+      "home_h2_5": "מוכנים ללילה שמתכנן את עצמו?",
+      "home_h3_6": "נשיכות ניאון בסוהו",
+      "home_h3_7": "אורות נהר + צלחות מאוחרות",
+      "home_h3_8": "שווקים אחרי החושך",
+      "home_h3_9": "טעימה ראשונה",
+      "home_p_20": "נוצר בשמחה על ידי Zappy",
+      "home_p_21": "חקרו את אורות העיר האיקוניים עם מדריך שמכיר את המטבחים הנסתרים, הקלאסיקות של הלילה המאוחר, ואת הנופים הטובים ביותר על הנהר.",
+      "home_p_22": "משך זמן: 2.5–3 שעות",
+      "home_p_23": "עצירות: 5–7 טעימות",
+      "home_p_24": "אפשרויות דיאטה: זמינות עם הודעה מראש",
+      "home_p_25": "הטוב ביותר עבור: מבקרים ראשונים",
+      "home_p_26": "טעימות: מרחוב לבר סמוי",
+      "home_p_27": "קצב: חיוני",
+      "home_p_28": "הטוב ביותר עבור: אוהבי קו רקיע",
+      "home_p_29": "עצירות: נופי נהר + נשיכות קלאסיות",
+      "home_p_30": "סיום: גשר ראוי לצילום",
+      "home_p_31": "הטוב ביותר עבור: חוקרי אוכל",
+      "home_p_32": "מיקוד: מועדפים מקומיים",
+      "home_p_33": "הערות: מסלול ידידותי לצמחוניים",
+      "home_p_34": "הליכות קצרות, טעמים גדולים, ונקודות תצפית מתוזמנות—כך תראו את העיר בבהירותה הגדולה ביותר מבלי להרגיש נחפזים.",
+      "home_p_35": "נשיכת חימום ליד רחובות צדדיים רוחשים.",
+      "home_p_36": "מקום קלאסי תחת שלטי ניאון זוהרים.",
+      "home_p_37": "מקום קטן, מנה חתימה גדולה.",
+      "home_p_38": "טעימות מהירות עם פטפוטים מקומיים.",
+      "home_p_39": "סיום עם אורות על המים.",
+      "home_p_40": "קצב מהיר, נקודות מפגש ברורות, וסוג האוכל שמוצאים רק כשמקומי לוקח אתכם.",
+      "home_p_41": "\"כל עצירה הרגישה מכוונת—אפס מלכודות תיירים.\"",
+      "home_p_42": "שרה מ. · סיור אוכל ערב",
+      "home_p_43": "\"איזון מושלם של הליכה, נשיכות, ורגעי קו רקיע.\"",
+      "home_p_44": "ג'יימס ק. · סיור מגדל לונדון",
+      "home_p_45": "\"התזמון של המדריך עם אורות העיר היה לא אמיתי.\"",
+      "home_p_46": "אמה ל. · חוויית אורות לילה",
+      "home_p_47": "\"הערב הטוב ביותר שהיה לנו—פשוט להצטרף, קל לעקוב.\"",
+      "home_p_48": "דיוויד ר. · הליכת פאבים היסטורית",
+      "home_p_49": "טעימות לסיור",
+      "home_p_50": "משך זמן טיפוסי",
+      "home_p_51": "גדלי קבוצות",
+      "home_p_52": "ספרו לנו את טווח התאריכים והצרכים התזונתיים שלכם - נחזור אליכם עם אפשרויות המסלול הטובות ביותר.",
+      "home_p_53": "הוראות ברורות לנקודת המפגש",
+      "home_p_54": "אפשרויות תזונתיות נתמכות עם הודעה מוקדמת",
+      "home_p_55": "תגובות מהירות, תיאום פשוט",
+      "home_p_56": "גלו את הקסם של לונדון עם סיורים מודרכים במומחיות. חוו ציוני דרך איקוניים, אבני חן נסתרות וזיכרונות בלתי נשכחים.",
+      "home_p_57": "© 2026 London Tour. כל הזכויות שמורות.",
+      "about_h1_1": "אנחנו מדריכים את העיר אחרי החשכה",
+      "about_h2_2": "האנשים מאחורי המסלולים",
+      "about_h2_3": "מה אנחנו מייעלים עבורו",
+      "about_h2_4": "מהימנים לחוויות לילה",
+      "about_h3_5": "קצב ברור",
+      "about_h3_6": "מקומות מקומיים אמיתיים",
+      "about_h3_7": "נופי לילה בכוונה",
+      "about_h3_8": "מדריך ראשי",
+      "about_h3_9": "סקאוט אוכל",
+      "about_p_18": "נוצר בשמחה על ידי Zappy",
+      "about_p_19": "העסק שלי בונה מסלולי ערב שמרגישים קלים: הרחובות הנכונים, התזמון הנכון, ומקומות שכדאי לטעום.",
+      "about_p_20": "אנחנו שומרים על קבוצות קטנות, הוראות ברורות, והלילה ממשיך לזוז.",
+      "about_p_21": "צוות קטן עם ידע גדול על העיר - אירוח קודם כל, אובססיביים לפרטים.",
+      "about_p_22": "עיצוב מסלולי לילה, קצב וסיפור.",
+      "about_p_23": "מוצא את המנות שהמקומיים באמת עומדים בתור בשבילן.",
+      "about_p_24": "מתאם פרטים ותומך בצרכים תזונתיים.",
+      "about_p_25": "נקודות מפגש והצעדים הבאים תמיד פשוטים.",
+      "about_p_26": "הליכות קצרות, ללא זמן מת.",
+      "about_p_27": "התחנות נבחרות לפי טעם ואווירה.",
+      "about_p_28": "אנחנו מתכננים למזג האוויר, לקהל ולניווט קל.",
+      "about_p_29": "אנחנו מעצבים מסלולים שמצטלמים יפה ומרגישים עוד יותר טוב באופן אישי.",
+      "about_p_30": "\"מדריך בטוח לאנרגיית הלילה של העיר.\"",
+      "about_p_31": "\"דרך מהירה ומובחרת לטעום שכונות.\"",
+      "about_p_32": "\"תזמון יוצא דופן לאורות איקוניים.\"",
+      "about_p_33": "\"תחושת קבוצה קטנה עם השפעה של עיר גדולה.\"",
+      "about_p_34": "לשיתופי פעולה וקבוצות פרטיות, פנו אלינו בכל עת.",
+      "about_p_35": "גלו את הקסם של לונדון עם סיורים מודרכים במומחיות. חוו ציוני דרך איקוניים, אבני חן נסתרות וזיכרונות בלתי נשכחים.",
+      "about_p_36": "© 2026 London Tour. כל הזכויות שמורות.",
+      "home_h3_10": "פינת ניאון",
+      "home_h3_11": "מטבח נסתר",
+      "home_h3_12": "רגע שוק לילה",
+      "home_h3_13": "נוף אחרון",
+      "home_h3_14": "5–7",
+      "home_h3_15": "2.5–3 שעות",
+      "home_h3_16": "קטן",
+      "home_h3_17": "קישורים מהירים",
+      "home_h3_18": "צרו קשר",
+      "home_h3_19": "משפטי",
+      "home_li_75": "סיורים",
+      "home_li_76": "אודות",
+      "home_li_77": "צור קשר",
+      "home_li_78": "[business_email]",
+      "home_li_79": "[business_phone]",
+      "home_li_80": "[business_address]",
+      "home_li_81": "מדיניות פרטיות",
+      "home_li_82": "תנאים והגבלות",
+      "home_li_83": "נגישות",
+      "terms_h1_1": "תנאי שימוש",
+      "terms_h2_2": "1. הגדרות",
+      "terms_h2_3": "2. תיאור השירותים",
+      "terms_h2_4": "3. תנאי השימוש",
+      "terms_h2_5": "4. התחייבויות המשתמש",
+      "terms_h2_6": "5. מדיניות תשלום והחזר",
+      "terms_h2_7": "6. הגבלת אחריות",
+      "terms_h2_8": "7. זכויות יוצרים וקניין רוחני",
+      "terms_h2_9": "8. פרטיות",
+      "terms_p_18": "London Tour מספקת שירותי תיירות דרך האתר. השירותים כפופים לתנאים המפורטים במסמך זה ועשויים להשתנות מעת לעת.",
+      "terms_p_19": "השימוש באתר מותנה בעמידה בתנאים הבאים:",
+      "terms_p_20": "אם השירותים כוללים תשלום:",
+      "terms_p_21": "השירותים מסופקים \"כפי שהם\" ללא אחריות מכל סוג שהוא. החברה לא תהיה אחראית לנזקים עקיפים, תוצאתיים או מיוחדים הנובעים משימוש באתר, למעט במקומות שבהם נדרש על פי חוק.",
+      "terms_p_22": "כל התוכן באתר, כולל טקסט, תמונות, עיצוב וקוד, מוגן בזכויות יוצרים השייכות ל-London Tour. אסור לשכפל, להפיץ או לעשות שימוש מסחרי בתוכן ללא רשות בכתב.",
+      "terms_p_23": "איסוף ושימוש במידע אישי כפופים למדיניות הפרטיות שלנו. השימוש באתר מהווה הסכמה למדיניות הפרטיות כפי שמפורט בנפרד.",
+      "terms_p_24": "החברה רשאית לשנות את תנאי השימוש הללו בכל עת. שינויים מהותיים יפורסמו באתר עם הודעה מוקדמת של 30 יום. המשך השימוש לאחר השינויים מהווה הסכמה לתנאים החדשים.",
+      "terms_p_25": "החברה רשאית להשעות או להגביל את השירות בכל עת, כולל במקרים של הפרת תנאי השימוש. במקרה של הפסקת שירות, הוראות רלוונטיות יישארו בתוקף.",
+      "terms_p_26": "תנאי השימוש הללו כפופים לחוקים החלים. כל מחלוקת תיפתר בהתאם לסמכות השיפוט המקומית, עם העדפה לבוררות או גישור במידת האפשר.",
+      "terms_p_27": "לשאלות או הבהרות בנוגע לתנאי השימוש:",
+      "terms_p_28": "גלו את הקסם של לונדון עם סיורים מודרכים במומחיות. חוו ציוני דרך איקוניים, אבני חן נסתרות וזיכרונות בלתי נשכחים.",
+      "terms_p_29": "© 2026 London Tour. כל הזכויות שמורות.",
+      "tours_h1_1": "סיורים שנבנו לאורות העיר",
+      "tours_h2_2": "איך הלילה זורם",
+      "tours_h2_3": "טוב לדעת",
+      "tours_h3_4": "נשיכות ניאון בסוהו",
+      "tours_h3_5": "אורות גדת הנהר + צלחות מאוחרות",
+      "tours_h3_6": "שווקים אחרי חשכה",
+      "tours_h3_7": "ציוני דרך + חטיפים מאוחרים",
+      "tours_h3_8": "טעמי לילה בצ'יינה טאון",
+      "tours_h3_9": "נשנושים לפני ההצגה בווסט אנד",
+      "tours_p_23": "נוצר באהבה על ידי Zappy",
+      "tours_p_24": "בחרו מסלול לפי אווירה - רחובות ניאון, זוהר נהר, או שווקים אחרי חשכה. כל הסיורים מתוכננים בקצב נוח ומפגשים ברורים.",
+      "tours_p_25": "משך: ~3 שעות",
+      "tours_p_26": "תחנות: 5-7",
+      "tours_p_27": "אידיאלי עבור: זוגות, חברים, הרפתקנים בודדים",
+      "tours_p_28": "משך: ~3 שעות",
+      "tours_p_29": "תחנות: 6-7",
+      "tours_p_30": "אידיאלי עבור: זוגות, קבוצות קטנות",
+      "tours_p_31": "משך: ~3 שעות",
+      "tours_p_32": "תחנות: 5-6",
+      "tours_p_33": "אידיאלי עבור: חברים, אוהבי אוכל, חוקרים בודדים",
+      "tours_p_34": "משך: ~3 שעות",
+      "tours_p_35": "תחנות: 6-7",
+      "tours_p_36": "אידיאלי עבור: תיירים, זוגות, משפחות",
+      "tours_p_37": "משך: ~3 שעות",
+      "tours_p_38": "תחנות: 5-7",
+      "tours_p_39": "אידיאלי עבור: אוהבי אוכל, חברים, סועדים בודדים",
+      "tours_p_40": "משך: ~3 שעות",
+      "tours_p_41": "תחנות: 5-6",
+      "tours_p_42": "אידיאלי עבור: צופי תיאטרון, זוגות, חובבי תרבות",
+      "tours_p_43": "אפשרויות מדריך סיור פרטי ומסלולים מותאמים אישית זמינים - שלחו לנו הודעה לתיאום הערב המושלם שלכם בלונדון.",
+      "tours_p_44": "היכרות מהירה והביס הראשון תוך 10 דקות.",
+      "tours_p_45": "3-4 תחנות עם הליכות קצרות ביניהן.",
+      "tours_p_46": "נקודת תצפית מתוזמנת לצילומים וקו אופק.",
+      "tours_p_47": "סיום מספק עם הכוונות ברורות להמשך.",
+      "tours_p_48": "קצב נוח עם הליכות קצרות בין התחנות.",
+      "tours_p_49": "כן - שתפו פרטים מראש ואנחנו נתאים את המסלול.",
+      "tours_p_50": "הסיורים מתקיימים גם בגשם; הביאו שכבה קלה.",
+      "tours_p_51": "כן - קבוצות קטנות הופכות את זה לקל.",
+      "tours_p_52": "פרטי המפגש המדויקים נשלחים לאחר האישור.",
+      "tours_p_53": "כן - שלחו לנו הודעה עם טווח התאריכים המועדף עליכם.",
+      "tours_p_54": "גלו את הקסם של לונדון עם סיורים מודרכים במומחיות. חוו ציוני דרך איקוניים, אבני חן נסתרות וזיכרונות בלתי נשכחים.",
+      "tours_p_55": "© 2026 London Tour. כל הזכויות שמורות.",
+      "about_h3_10": "טיפול באורחים",
+      "about_h3_11": "בהירות",
+      "about_h3_12": "מומנטום",
+      "about_h3_13": "איכות",
+      "about_h3_14": "נוחות",
+      "about_h3_15": "קישורים מהירים",
+      "about_h3_16": "צור קשר",
+      "about_h3_17": "משפטי",
+      "about_li_49": "סיורים",
+      "about_li_50": "אודות",
+      "about_li_51": "צור קשר",
+      "about_li_52": "[business_email]",
+      "about_li_53": "[business_phone]",
+      "about_li_54": "[business_address]",
+      "about_li_55": "מדיניות פרטיות",
+      "about_li_56": "תנאים והגבלות",
+      "about_li_57": "נגישות",
+      "home_alt_87": "London Tour",
+      "home_alt_88": "רחובות לונדון בלילה עם השתקפויות ניאון וציוני דרך איקוניים",
+      "home_alt_89": "רחוב סוהו מואר בניאון בלילה עם רוכלי מזון",
+      "home_alt_90": "גדת התמזה בלילה עם גשרים מוארים וקו אופק",
+      "home_alt_91": "שוק אוכל רחוב בלונדון מואר בלילה",
+      "home_alt_92": "נוף עירוני לילי של לונדון עם ציוני דרך מוארים",
+      "home_alt_93": "London Tour",
+      "home_nav_84": "סיורים",
+      "home_nav_85": "אודות",
+      "home_nav_86": "צור קשר",
+      "terms_h2_10": "9. שינויים בתנאי השימוש",
+      "terms_h2_11": "10. הפסקת שירות",
+      "terms_h2_12": "11. דין חל ויישוב סכסוכים",
+      "terms_h2_13": "12. הוראות כלליות",
+      "terms_h2_14": "13. פרטי התקשרות",
+      "terms_h3_15": "קישורים מהירים",
+      "terms_h3_16": "צור קשר",
+      "terms_h3_17": "משפטי",
+      "terms_li_42": "\"החברה\" - London Tour",
+      "terms_li_43": "\"המשתמש\" - כל מי שגולש או משתמש באתר",
+      "terms_li_44": "\"השירותים\" - תיירות הניתנת דרך האתר",
+      "terms_li_45": "שימוש באתר למטרות חוקיות בלבד",
+      "terms_li_46": "אי הפרעה לפעילות האתר או למשתמשים אחרים",
+      "terms_li_47": "אי העלאת תוכן פוגעני, לא חוקי או מזיק",
+      "terms_li_48": "כיבוד זכויות יוצרים וקניין רוחני",
+      "terms_li_49": "אי ביצוע פעולות העלולות לפגוע באבטחת האתר",
+      "terms_li_50": "מתן מידע מדויק ואמיתי במהלך הרשמה או הזמנה",
+      "terms_li_51": "שמירה על סודיות פרטי הגישה לחשבון",
+      "terms_li_52": "הודעה מיידית על כל שימוש לא מורשה בחשבון",
+      "terms_li_53": "עדכון מידע אישי לפי הצורך",
+      "terms_li_54": "התשלומים מעובדים באמצעות מערכות מאובטחות ומוצפנות",
+      "terms_li_55": "המחירים כוללים מיסים החלים כנדרש על פי חוק",
+      "terms_li_56": "הזכות לביטול תהיה בהתאם לחוקי הגנת הצרכן",
+      "terms_li_57": "החזרים יעובדו תוך 14 ימי עסקים מאישור הביטול",
+      "terms_li_58": "אם חלק כלשהו מהתנאים יימצא לא תקף, התנאים הנותרים יישארו בתוקף",
+      "terms_li_59": "אי אכיפת זכות לא תיחשב כוויתור",
+      "terms_li_60": "תנאי שימוש אלה מהווים את כלל ההסכם בין הצדדים",
+      "terms_li_61": "החברה: London Tour",
+      "terms_li_62": "דוא\"ל: info@company.com",
+      "terms_li_63": "טלפון: 03-1234567",
+      "terms_li_64": "כתובת: כתובת החברה, ישראל",
+      "terms_li_65": "טיולים",
+      "terms_li_66": "אודות",
+      "terms_li_67": "צור קשר",
+      "terms_li_68": "[business_email]",
+      "terms_li_69": "[business_phone]",
+      "terms_li_70": "[business_address]",
+      "terms_li_71": "מדיניות פרטיות",
+      "terms_li_72": "תנאים והגבלות",
+      "terms_li_73": "נגישות",
+      "tours_h3_10": "היכרות + חימום",
+      "tours_h3_11": "טעימות מרכזיות",
+      "tours_h3_12": "אורות איקוניים",
+      "tours_h3_13": "תחנה אחרונה",
+      "tours_h3_14": "האם זה הרבה הליכה?",
+      "tours_h3_15": "האם אתם יכולים להתמודד עם צרכים תזונתיים?",
+      "tours_h3_16": "מה אם יורד גשם?",
+      "tours_h3_17": "האם זה מתאים לנוסעים בודדים?",
+      "tours_h3_18": "איפה אנחנו נפגשים?",
+      "tours_h3_19": "האם אני יכול לבקש סיור פרטי?",
+      "tours_h3_20": "קישורים מהירים",
+      "tours_h3_21": "צרו קשר",
+      "tours_h3_22": "משפטי",
+      "tours_li_70": "סיורים",
+      "tours_li_71": "אודות",
+      "tours_li_72": "צור קשר",
+      "tours_li_73": "[business_email]",
+      "tours_li_74": "[business_phone]",
+      "tours_li_75": "[business_address]",
+      "tours_li_76": "מדיניות פרטיות",
+      "tours_li_77": "תנאים והגבלות",
+      "tours_li_78": "נגישות",
+      "about_alt_61": "London Tour",
+      "about_alt_62": "מדריך טיולים בלונדון מוביל סיור הליכה ערב ברחובות העיר המוארים",
+      "about_alt_63": "מדריך טיולים ראשי - מומחה London Tour",
+      "about_alt_64": "סקאוט אוכל - מומחה קולינרי לונדוני",
+      "about_alt_65": "שירות לקוחות - מומחה שירות לקוחות London Tour",
+      "about_alt_66": "פנורמה של קו הרקיע הלילי של לונדון",
+      "about_alt_67": "סצנת חיי הלילה בלונדון עם קהל הנהנה מאווירת הערב",
+      "about_alt_68": "London Tour",
+      "about_nav_58": "סיורים",
+      "about_nav_59": "אודות",
+      "about_nav_60": "צור קשר",
+      "contact_h1_1": "שלחו לנו הודעה כדי לתכנן את הלילה שלכם",
+      "contact_h2_2": "שלחו הודעה",
+      "contact_h2_3": "מפגשים פשוטים",
+      "contact_h3_4": "אימייל",
+      "contact_h3_5": "טלפון",
+      "contact_h3_6": "זמן תגובה",
+      "contact_h3_7": "קישורים מהירים",
+      "contact_h3_8": "צרו קשר",
+      "contact_h3_9": "משפטי",
+      "contact_p_10": "נוצר באהבה על ידי Zappy",
+      "contact_p_11": "שלחו את טווח התאריכים המועדף עליכם, גודל הקבוצה וכל הערות תזונתיות. נענה עם המסלול המתאים ביותר.",
+      "contact_p_12": "[business_email]",
+      "contact_p_13": "[business_phone]",
+      "contact_p_14": "בדרך כלל תוך 24 שעות",
+      "contact_p_15": "ספרו לנו איזה סוג לילה אתם רוצים - רחובות ניאון, אורות לצד הנהר או שווקים.",
+      "contact_p_16": "על ידי שליחת הודעה זו, אתם מסכימים להיות מוזמנים לקשר בנוגע לבקשתכם.",
+      "contact_p_17": "אנו חולקים נקודת מפגש מדויקת וסיכום מסלול קצר וקל לביצוע.",
+      "contact_p_18": "אם אתם לא בטוחים איזה אזור מתאים ללילה שלכם, שלחו לנו הודעה ואנו נמליץ על השכונה הטובה ביותר להתחלה.",
+      "contact_p_19": "גלו את הקסם של לונדון עם סיורים מודרכים במומחיות. חוו ציוני דרך איקוניים, אבני חן נסתרות וזיכרונות בלתי נשכחים.",
+      "contact_p_20": "© 2026 London Tour. כל הזכויות שמורות.",
+      "home_link_60": "Zappy",
+      "home_link_61": "בדיקת זמינות",
+      "home_link_62": "שאלו שאלה",
+      "home_link_63": "שלחו לנו הודעה להזמנה",
+      "home_link_64": "צרו קשר עם העסק שלי",
+      "home_link_65": "סיורים",
+      "home_link_66": "אודות",
+      "home_link_67": "צור קשר",
+      "home_link_68": "[business_email]",
+      "home_link_69": "[business_phone]",
+      "home_link_70": "[business_address]",
+      "home_link_71": "מדיניות פרטיות",
+      "home_link_72": "תנאים והגבלות",
+      "home_link_73": "נגישות",
+      "home_link_74": "נוצר על ידי Zappy",
+      "home_span_58": "Real Bites",
+      "home_span_59": "[business_address]",
+      "privacy_h1_1": "מדיניות פרטיות",
+      "privacy_h2_2": "1. איסוף מידע",
+      "privacy_h2_3": "2. שימוש במידע",
+      "privacy_h2_4": "3. שיתוף מידע",
+      "privacy_h2_5": "4. זכויות המשתמש",
+      "privacy_h2_6": "5. עוגיות",
+      "privacy_h2_7": "6. אבטחת מידע",
+      "privacy_h2_8": "7. שינויים במדיניות",
+      "privacy_h2_9": "8. פרטי התקשרות",
+      "privacy_p_13": "London Tour (\"החברה\", \"אנחנו\", \"שלנו\") מחויבת להגנה על פרטיותכם. מדיניות פרטיות זו מסבירה כיצד אנו אוספים, משתמשים ומגנים על המידע שלכם כאשר אתם משתמשים באתר שלנו www.company.com (\"השירות\").",
+      "privacy_p_14": "אנו עשויים לאסוף את סוגי המידע הבאים:",
+      "privacy_p_15": "אנו משתמשים במידע שנאסף למטרות הבאות:",
+      "privacy_p_16": "אנו לא מוכרים, משכירים או משתפים את המידע האישי שלכם עם צדדים שלישיים, למעט במקרים הבאים:",
+      "privacy_p_17": "בהתאם לחוק הגנת הפרטיות הישראלי 1981, יש לכם את הזכויות הבאות:",
+      "privacy_p_18": "האתר שלנו משתמש בעוגיות כדי לשפר את חוויית המשתמש. תוכלו לנהל עוגיות דרך הגדרות הדפדפן שלכם. השבתת עוגיות עלולה להשפיע על פונקציונליות האתר.",
+      "privacy_p_19": "אנו מיישמים אמצעי אבטחה סבירים כדי להגן על המידע שלכם, כולל הצפנה, חומות אש ובקרת גישה מוגבלת. עם זאת, אף שיטת העברה או אחסון אינה מאובטחת ב-100%.",
+      "privacy_p_20": "אנו עשויים לעדכן את מדיניות הפרטיות הזו מעת לעת. שינויים מהותיים יפורסמו באתר עם הודעה מוקדמת של 30 יום.",
+      "privacy_p_21": "לשאלות או בקשות בנוגע למדיניות פרטיות זו, אנא צרו איתנו קשר:",
+      "privacy_p_22": "רשות הגנת הנתונים: לתלונות, תוכלו לפנות לרשות הגנת הנתונים במשרד המשפטים",
+      "privacy_p_23": "גלו את הקסם של לונדון עם סיורים מודרכים במומחיות. חוו ציוני דרך איקוניים, אבני חן נסתרות וזיכרונות בלתי נשכחים.",
+      "privacy_p_24": "© 2026 London Tour. כל הזכויות שמורות.",
+      "terms_alt_77": "London Tour",
+      "terms_alt_78": "London Tour",
+      "terms_nav_74": "טיולים",
+      "terms_nav_75": "אודות",
+      "terms_nav_76": "צור קשר",
+      "tours_alt_82": "London Tour",
+      "tours_alt_83": "סיור ערב בלונדון עם אתרי העיר המוארים וחיי הלילה התוססים",
+      "tours_alt_84": "סיור לילה Neon Bites בסוהו",
+      "tours_alt_85": "סיור Riverside Lights and Late Plates",
+      "tours_alt_86": "סיור Markets After Dark",
+      "tours_alt_87": "סיור Landmarks and Late Snacks",
+      "tours_alt_88": "סיור Chinatown Night Flavors",
+      "tours_alt_89": "סיור West End Pre-Show Bites",
+      "tours_alt_90": "סיור אוכל ערב בלונדון עם אורות העיר האיקוניים",
+      "tours_alt_91": "נקודת תצפית על קו הרקיע של לונדון בסיור לילה",
+      "tours_alt_92": "London Tour",
+      "tours_nav_79": "סיורים",
+      "tours_nav_80": "אודות",
+      "tours_nav_81": "צור קשר",
+      "about_link_38": "Zappy",
+      "about_link_39": "סיורים",
+      "about_link_40": "אודות",
+      "about_link_41": "צור קשר",
+      "about_link_42": "[business_email]",
+      "about_link_43": "[business_phone]",
+      "about_link_44": "[business_address]",
+      "about_link_45": "מדיניות פרטיות",
+      "about_link_46": "תנאים והגבלות",
+      "about_link_47": "נגישות",
+      "about_link_48": "נוצר על ידי Zappy",
+      "about_span_37": "[business_address]",
+      "contact_li_41": "טיולים",
+      "contact_li_42": "אודות",
+      "contact_li_43": "צור קשר",
+      "contact_li_44": "[business_email]",
+      "contact_li_45": "[business_phone]",
+      "contact_li_46": "[business_address]",
+      "contact_li_47": "מדיניות פרטיות",
+      "contact_li_48": "תנאים והגבלות",
+      "contact_li_49": "נגישות",
+      "privacy_h3_10": "קישורים מהירים",
+      "privacy_h3_11": "צור קשר",
+      "privacy_h3_12": "משפטי",
+      "privacy_li_37": "מידע אישי: שם, כתובת אימייל, מספר טלפון וכתובת",
+      "privacy_li_38": "מידע טכני: כתובת IP, סוג דפדפן, מערכת הפעלה ונתוני שימוש באתר",
+      "privacy_li_39": "עוגיות: מידע המאוחסן במחשב שלך לשיפור חוויית המשתמש",
+      "privacy_li_40": "מתן השירותים המבוקשים",
+      "privacy_li_41": "שיפור השירות וחוויית המשתמש",
+      "privacy_li_42": "יצירת קשר איתך בנוגע לשירותים שלנו",
+      "privacy_li_43": "עמידה בדרישות חוקיות",
+      "privacy_li_44": "בהסכמתך המפורשת",
+      "privacy_li_45": "כאשר נדרש על פי חוק",
+      "privacy_li_46": "כדי להגן על זכויותינו או על בטיחות המשתמשים",
+      "privacy_li_47": "עם ספקי שירותים המסייעים בהפעלת השירות (תחת הסכמי סודיות)",
+      "privacy_li_48": "זכות גישה למידע האישי המאוחסן עליך",
+      "privacy_li_49": "זכות לתקן מידע לא מדויק או לא שלם",
+      "privacy_li_50": "זכות למחוק מידע אישי בנסיבות מסוימות",
+      "privacy_li_51": "זכות להתנגד לעיבוד מידע למטרות שיווק",
+      "privacy_li_52": "זכות להגיש תלונה לרשות הגנת הפרטיות",
+      "privacy_li_53": "חברה: London Tour",
+      "privacy_li_54": "אימייל: info@company.com",
+      "privacy_li_55": "טלפון: 03-1234567",
+      "privacy_li_56": "כתובת: כתובת החברה, ישראל",
+      "privacy_li_57": "סיורים",
+      "privacy_li_58": "אודות",
+      "privacy_li_59": "צור קשר",
+      "privacy_li_60": "[business_email]",
+      "privacy_li_61": "[business_phone]",
+      "privacy_li_62": "[business_address]",
+      "privacy_li_63": "מדיניות פרטיות",
+      "privacy_li_64": "תנאים והגבלות",
+      "privacy_li_65": "נגישות",
+      "terms_link_31": "info@company.com",
+      "terms_link_32": "סיורים",
+      "terms_link_33": "אודות",
+      "terms_link_34": "צור קשר",
+      "terms_link_35": "[business_email]",
+      "terms_link_36": "[business_phone]",
+      "terms_link_37": "[business_address]",
+      "terms_link_38": "מדיניות פרטיות",
+      "terms_link_39": "תנאים והגבלות",
+      "terms_link_40": "נגישות",
+      "terms_link_41": "Generated by Zappy",
+      "terms_span_30": "[business_address]",
+      "tours_link_57": "Zappy",
+      "tours_link_58": "שאל על תאריכים",
+      "tours_link_59": "צור קשר לפרטים",
+      "tours_link_60": "סיורים",
+      "tours_link_61": "אודות",
+      "tours_link_62": "צור קשר",
+      "tours_link_63": "[business_email]",
+      "tours_link_64": "[business_phone]",
+      "tours_link_65": "[business_address]",
+      "tours_link_66": "מדיניות פרטיות",
+      "tours_link_67": "תנאים והגבלות",
+      "tours_link_68": "נגישות",
+      "tours_link_69": "נוצר על ידי Zappy",
+      "tours_span_56": "[business_address]",
+      "contact_alt_54": "London Tour",
+      "contact_alt_55": "תייר משתמש בטלפון כדי לתכנן סיור לילי בלונדון",
+      "contact_alt_56": "מפת לילה מסוגננת של לונדון המציגה מסלולי מפגש לסיורים",
+      "contact_alt_57": "London Tour",
+      "contact_btn_36": "שלח",
+      "contact_nav_50": "סיורים",
+      "contact_nav_51": "אודות",
+      "contact_nav_52": "צור קשר",
+      "privacy_alt_69": "London Tour",
+      "privacy_alt_70": "London Tour",
+      "privacy_nav_66": "סיורים",
+      "privacy_nav_67": "אודות",
+      "privacy_nav_68": "צור קשר",
+      "contact_link_22": "Zappy",
+      "contact_link_23": "עברו לטופס הודעה",
+      "contact_link_24": "צפו בטיולים",
+      "contact_link_25": "עיינו בטיולים",
+      "contact_link_26": "טיולים",
+      "contact_link_27": "אודות",
+      "contact_link_28": "צור קשר",
+      "contact_link_29": "[business_email]",
+      "contact_link_30": "[business_phone]",
+      "contact_link_31": "[business_address]",
+      "contact_link_32": "מדיניות פרטיות",
+      "contact_link_33": "תנאים והגבלות",
+      "contact_link_34": "נגישות",
+      "contact_link_35": "נוצר על ידי Zappy",
+      "contact_span_21": "[business_address]",
+      "home_page_title": "בית - London Tour",
+      "privacy_link_26": "info@company.com",
+      "privacy_link_27": "סיורים",
+      "privacy_link_28": "אודות",
+      "privacy_link_29": "צור קשר",
+      "privacy_link_30": "[business_email]",
+      "privacy_link_31": "[business_phone]",
+      "privacy_link_32": "[business_address]",
+      "privacy_link_33": "מדיניות פרטיות",
+      "privacy_link_34": "תנאים והגבלות",
+      "privacy_link_35": "נגישות",
+      "privacy_link_36": "נוצר על ידי Zappy",
+      "privacy_span_25": "[business_address]",
+      "about_page_title": "אודות - London Tour",
+      "contact_label_37": "שם",
+      "contact_label_38": "אימייל",
+      "contact_label_39": "טלפון",
+      "contact_label_40": "הודעה",
+      "legal_terms_h1_1": "תנאי שימוש",
+      "legal_terms_h2_2": "1. הגדרות",
+      "legal_terms_h2_3": "2. תיאור השירותים",
+      "legal_terms_h2_4": "3. תנאי השימוש",
+      "legal_terms_h2_5": "4. חובות המשתמש",
+      "legal_terms_h2_6": "5. מדיניות תשלום והחזר",
+      "legal_terms_h2_7": "6. הגבלת אחריות",
+      "legal_terms_h2_8": "7. זכויות יוצרים וקניין רוחני",
+      "legal_terms_h2_9": "8. פרטיות",
+      "legal_terms_p_15": "[business_name] מספקת שירותים כלליים באמצעות האתר. השירותים כפופים לתנאים המפורטים במסמך זה ועשויים להשתנות מעת לעת.",
+      "legal_terms_p_16": "השימוש באתר מותנה בעמידה בתנאים הבאים:",
+      "legal_terms_p_17": "אם השירותים כוללים תשלום:",
+      "legal_terms_p_18": "השירותים מסופקים \"כפי שהם\" ללא אחריות מכל סוג שהוא. החברה לא תהיה אחראית לנזקים עקיפים, תוצאתיים או מיוחדים הנובעים משימוש באתר, למעט במקרים שבהם נדרש על פי חוק.",
+      "legal_terms_p_19": "כל התוכן באתר, כולל טקסט, תמונות, עיצוב וקוד, מוגן בזכויות יוצרים השייכות ל-[business_name]. שכפול, הפצה או שימוש מסחרי בתוכן אסור ללא אישור בכתב.",
+      "legal_terms_p_20": "איסוף ושימוש במידע אישי כפופים למדיניות הפרטיות שלנו. השימוש באתר מהווה הסכמה למדיניות הפרטיות כמפורט בנפרד.",
+      "legal_terms_p_21": "החברה רשאית לשנות את תנאי השימוש הללו בכל עת. שינויים מהותיים יפורסמו באתר עם הודעה מוקדמת של 30 יום. המשך השימוש לאחר השינויים מהווה הסכמה לתנאים החדשים.",
+      "legal_terms_p_22": "החברה רשאית להשעות או להגביל את השירות בכל עת, כולל במקרים של הפרת תנאי השימוש. במקרה של הפסקת שירות, הוראות רלוונטיות יישארו בתוקף.",
+      "legal_terms_p_23": "תנאי השימוש הללו כפופים לחוקים החלים. כל מחלוקת תיפתר בהתאם לסמכות השיפוט המקומית, עם העדפה לבוררות או גישור במידת האפשר.",
+      "legal_terms_p_24": "לשאלות או הבהרות בנוגע לתנאי השימוש:",
+      "terms_page_title": "תנאים והגבלות",
+      "tours_page_title": "סיורים - London Tour",
+      "legal_terms_h2_10": "9. שינויים בתנאי השימוש",
+      "legal_terms_h2_11": "10. הפסקת שירות",
+      "legal_terms_h2_12": "11. דין החל ויישוב סכסוכים",
+      "legal_terms_h2_13": "12. הוראות כלליות",
+      "legal_terms_h2_14": "13. פרטי יצירת קשר",
+      "legal_terms_li_28": "\"החברה\" - [business_name]",
+      "legal_terms_li_29": "\"משתמש\" - כל מי שגולש או משתמש באתר",
+      "legal_terms_li_30": "\"שירותים\" - שירותים כלליים הניתנים באמצעות האתר",
+      "legal_terms_li_31": "שימוש באתר למטרות חוקיות בלבד",
+      "legal_terms_li_32": "אי הפרעה לפעילות האתר או למשתמשים אחרים",
+      "legal_terms_li_33": "אי העלאת תוכן פוגעני, בלתי חוקי או מזיק",
+      "legal_terms_li_34": "כיבוד זכויות יוצרים וקניין רוחני",
+      "legal_terms_li_35": "אי ביצוע פעולות העלולות לפגוע באבטחת האתר",
+      "legal_terms_li_36": "מתן מידע מדויק ואמיתי במהלך הרשמה או הזמנה",
+      "legal_terms_li_37": "שמירה על סודיות פרטי הגישה לחשבון",
+      "legal_terms_li_38": "הודעה מיידית על כל שימוש לא מורשה בחשבון",
+      "legal_terms_li_39": "עדכון מידע אישי לפי הצורך",
+      "legal_terms_li_40": "תשלומים מעובדים באמצעות מערכות מאובטחות ומוצפנות",
+      "legal_terms_li_41": "המחירים כוללים מסים החלים כנדרש על פי חוק",
+      "legal_terms_li_42": "זכות הביטול תהיה בהתאם לחוקי הגנת הצרכן",
+      "legal_terms_li_43": "החזרים יעובדו תוך 14 ימי עסקים מאישור הביטול",
+      "legal_terms_li_44": "אם חלק כלשהו מהתנאים יימצא לא תקף, התנאים הנותרים יישארו בתוקף",
+      "legal_terms_li_45": "אי אכיפת זכות לא תיחשב כוויתור",
+      "legal_terms_li_46": "תנאי השימוש הללו מהווים את כלל ההסכם בין הצדדים",
+      "legal_terms_li_47": "חברה: [business_name]",
+      "legal_terms_li_48": "אימייל: [business_email]",
+      "legal_terms_li_49": "טלפון: [business_phone]",
+      "legal_terms_li_50": "כתובת: [business_address]",
+      "accessibility_h1_1": "הצהרת נגישות",
+      "accessibility_h2_2": "1. מדיניות נגישות",
+      "accessibility_h2_3": "2. הסדרי נגישות באתר",
+      "accessibility_h2_4": "3. טכנולוגיות מסייעות נתמכות",
+      "accessibility_h2_5": "4. בדיקות נגישות",
+      "accessibility_h2_6": "5. שיפורים מתמשכים",
+      "accessibility_h2_7": "6. יצירת קשר ומשוב",
+      "accessibility_h3_8": "עמידה ב-WCAG 2.1",
+      "accessibility_h3_9": "קישורים מהירים",
+      "accessibility_p_12": "London Tour מחויבת להנגיש את השירותים שלנו לכל המשתמשים. אנו שואפים ליישם את התקן הישראלי (ת\"י 5568) המבוסס על הנחיות WCAG 2.1 Level AA.",
+      "accessibility_p_13": "אנו מאמינים בשוויון זכויות ובזכותו של כל אדם לקבל מידע ושירותים באופן עצמאי ושוויוני. אתר זה תוכנן ונבנה בדגש מיוחד על נגישות לאנשים עם מוגבלויות.",
+      "accessibility_p_14": "האתר עומד בתקן WCAG 2.1 Level AA, הכולל:",
+      "accessibility_p_15": "האתר נבדק באמצעות:",
+      "accessibility_p_16": "אנו עובדים ברציפות לשיפור הנגישות של האתר שלנו ולעדכונו בהתאם להתפתחויות טכנולוגיות ומשוב משתמשים.",
+      "accessibility_p_17": "אם נתקלתם בבעיית נגישות באתר או זקוקים לסיוע, אנא צרו איתנו קשר:",
+      "accessibility_p_18": "זמן תגובה: אנו מגיבים לפניות נגישות תוך 3 ימי עסקים ופועלים לפתרון בעיות תוך 10 ימי עסקים.",
+      "accessibility_p_19": "גלו את הקסם של לונדון עם סיורים מודרכים מקצועיים. חוו ציוני דרך איקוניים, אוצרות נסתרים וזיכרונות בלתי נשכחים.",
+      "accessibility_p_20": "© 2026 London Tour. כל הזכויות שמורות.",
+      "contact_page_title": "צור קשר - London Tour",
+      "legal_privacy_h1_1": "מדיניות פרטיות",
+      "legal_privacy_h2_2": "1. איסוף מידע",
+      "legal_privacy_h2_3": "2. שימוש במידע",
+      "legal_privacy_h2_4": "3. שיתוף מידע",
+      "legal_privacy_h2_5": "4. זכויות המשתמש",
+      "legal_privacy_h2_6": "5. עוגיות",
+      "legal_privacy_h2_7": "6. אבטחת מידע",
+      "legal_privacy_h2_8": "7. שינויים במדיניות",
+      "legal_privacy_h2_9": "8. פרטי התקשרות",
+      "legal_privacy_p_10": "[business_name] (\"החברה\", \"אנחנו\", \"שלנו\") מחויבת להגנה על פרטיותכם. מדיניות פרטיות זו מסבירה כיצד אנו אוספים, משתמשים ומגינים על המידע שלכם כאשר אתם משתמשים באתר שלנו www.company.com (\"השירות\").",
+      "legal_privacy_p_11": "אנו עשויים לאסוף את סוגי המידע הבאים:",
+      "legal_privacy_p_12": "אנו משתמשים במידע שנאסף למטרות הבאות:",
+      "legal_privacy_p_13": "אנו לא מוכרים, משכירים או חולקים את המידע האישי שלכם עם צדדים שלישיים, למעט במקרים הבאים:",
+      "legal_privacy_p_14": "בהתאם לחוק הגנת הפרטיות התשמ\"א 1981, יש לכם את הזכויות הבאות:",
+      "legal_privacy_p_15": "האתר שלנו משתמש בעוגיות לשיפור חוויית המשתמש. ניתן לנהל עוגיות דרך הגדרות הדפדפן שלכם. השבתת עוגיות עלולה להשפיע על פונקציונליות האתר.",
+      "legal_privacy_p_16": "אנו מיישמים אמצעי אבטחה סבירים להגנה על המידע שלכם, כולל הצפנה, חומות אש ובקרת גישה מוגבלת. עם זאת, אף שיטת העברה או אחסון אינה מאובטחת ב-100%.",
+      "legal_privacy_p_17": "אנו עשויים לעדכן את מדיניות הפרטיות הזו מעת לעת. שינויים מהותיים יפורסמו באתר עם הודעה מוקדמת של 30 יום.",
+      "legal_privacy_p_18": "לשאלות או בקשות בנוגע למדיניות פרטיות זו, אנא צרו איתנו קשר:",
+      "legal_privacy_p_19": "רשות הגנת הנתונים: לתלונות, ניתן לפנות לרשות הגנת הנתונים במשרד המשפטים",
+      "privacy_page_title": "מדיניות פרטיות",
+      "accessibility_h3_10": "צור קשר",
+      "accessibility_h3_11": "משפטי",
+      "accessibility_li_33": "תמיכה בניווט מקלדת",
+      "accessibility_li_34": "תאימות לקוראי מסך",
+      "accessibility_li_35": "ניגודיות צבעים מתאימה",
+      "accessibility_li_36": "גדלי גופן גמישים וניתנים להגדלה",
+      "accessibility_li_37": "טקסט תיאורי לתמונות",
+      "accessibility_li_38": "מבנה כותרות היררכי",
+      "accessibility_li_39": "קישורים ברורים ותיאוריים",
+      "accessibility_li_40": "תמיכה בזום של 200% ללא אובדן תוכן",
+      "accessibility_li_41": "ניתן לתפיסה: מידע מוצג בדרכים שמשתמשים יכולים לתפוס",
+      "accessibility_li_42": "ניתן להפעלה: רכיבי ממשק ניתנים להפעלה",
+      "accessibility_li_43": "ניתן להבנה: מידע וממשק משתמש ניתנים להבנה",
+      "accessibility_li_44": "חזק: תוכן יכול להתפרש על ידי מגוון טכנולוגיות",
+      "accessibility_li_45": "NVDA (Windows)",
+      "accessibility_li_46": "JAWS (Windows)",
+      "accessibility_li_47": "VoiceOver (Mac/iOS)",
+      "accessibility_li_48": "TalkBack (Android)",
+      "accessibility_li_49": "Dragon NaturallySpeaking",
+      "accessibility_li_50": "ניווט מתגים",
+      "accessibility_li_51": "כלי בדיקת נגישות אוטומטיים",
+      "accessibility_li_52": "בדיקה ידנית עם קוראי מסך",
+      "accessibility_li_53": "ניווט מקלדת בלבד",
+      "accessibility_li_54": "אימות ניגודיות צבעים",
+      "accessibility_li_55": "בדיקה עם משתמשים עם מוגבלויות",
+      "accessibility_li_56": "חברה: London Tour",
+      "accessibility_li_57": "אימייל: info@company.com",
+      "accessibility_li_58": "טלפון: 03-1234567",
+      "accessibility_li_59": "סיורים",
+      "accessibility_li_60": "אודות",
+      "accessibility_li_61": "צור קשר",
+      "accessibility_li_62": "[business_email]",
+      "accessibility_li_63": "[business_phone]",
+      "accessibility_li_64": "[business_address]",
+      "accessibility_li_65": "מדיניות פרטיות",
+      "accessibility_li_66": "תנאי שימוש",
+      "accessibility_li_67": "נגישות",
+      "legal_privacy_li_23": "מידע אישי: שם, כתובת דוא\"ל, מספר טלפון וכתובת",
+      "legal_privacy_li_24": "מידע טכני: כתובת IP, סוג דפדפן, מערכת הפעלה ונתוני שימוש באתר",
+      "legal_privacy_li_25": "עוגיות: מידע המאוחסן במחשב שלכם לשיפור חוויית המשתמש",
+      "legal_privacy_li_26": "מתן שירותים מבוקשים",
+      "legal_privacy_li_27": "שיפור השירות וחוויית המשתמש",
+      "legal_privacy_li_28": "יצירת קשר איתכם בנוגע לשירותים שלנו",
+      "legal_privacy_li_29": "עמידה בדרישות חוקיות",
+      "legal_privacy_li_30": "בהסכמה מפורשת שלכם",
+      "legal_privacy_li_31": "כאשר נדרש על פי חוק",
+      "legal_privacy_li_32": "להגנה על זכויותינו או בטיחות המשתמשים",
+      "legal_privacy_li_33": "עם ספקי שירותים המסייעים בהפעלת השירות (תחת הסכמי סודיות)",
+      "legal_privacy_li_34": "זכות גישה למידע אישי המאוחסן עליכם",
+      "legal_privacy_li_35": "זכות לתקן מידע לא מדויק או חסר",
+      "legal_privacy_li_36": "זכות למחוק מידע אישי בנסיבות מסוימות",
+      "legal_privacy_li_37": "זכות להתנגד לעיבוד מידע למטרות שיווקיות",
+      "legal_privacy_li_38": "זכות להגיש תלונה לרשות הגנת הנתונים",
+      "legal_privacy_li_39": "חברה: [business_name]",
+      "legal_privacy_li_40": "דוא\"ל: [business_email]",
+      "legal_privacy_li_41": "טלפון: [business_phone]",
+      "legal_privacy_li_42": "כתובת: [business_address]",
+      "legal_terms_link_25": "[business_email]",
+      "legal_terms_link_26": "[business_phone]",
+      "legal_terms_link_27": "← חזרה לאתר",
+      "accessibility_alt_71": "London Tour",
+      "accessibility_alt_72": "London Tour",
+      "accessibility_nav_68": "סיורים",
+      "accessibility_nav_69": "אודות",
+      "accessibility_nav_70": "צור קשר",
+      "accessibility_link_22": "info@company.com",
+      "accessibility_link_23": "סיורים",
+      "accessibility_link_24": "אודות",
+      "accessibility_link_25": "צור קשר",
+      "accessibility_link_26": "[business_email]",
+      "accessibility_link_27": "[business_phone]",
+      "accessibility_link_28": "[business_address]",
+      "accessibility_link_29": "מדיניות פרטיות",
+      "accessibility_link_30": "תנאים והגבלות",
+      "accessibility_link_31": "נגישות",
+      "accessibility_link_32": "נוצר על ידי Zappy",
+      "accessibility_span_21": "[business_address]",
+      "home_meta_description": "בית - London Tour מספק שירותי תיירות מקצועיים. מתמחה בסיור מגדל לונדון.",
+      "legal_privacy_link_20": "[business_email]",
+      "legal_privacy_link_21": "[business_phone]",
+      "legal_privacy_link_22": "← חזרה לאתר",
+      "about_meta_description": "אודות - London Tour מספקת שירותי תיירות מקצועיים. מתמחה בסיור מגדל לונדון.",
+      "contact_placeholder_53": "[business_phone]",
+      "legal_terms_page_title": "תנאי שימוש - [business_name]",
+      "terms_meta_description": "תנאי שירות - זכויות וחובות המשתמש",
+      "tours_meta_description": "סיורים - London Tour מספקת שירותי תיירות מקצועיים. מתמחים בסיור מגדל לונדון.",
+      "legal_accessibility_p_9": "[business_name] מחויבת להפוך את השירותים שלנו לנגישים לכל המשתמשים. אנו שואפים ליישם את התקן הישראלי (ת\"י 5568) המבוסס על הנחיות WCAG 2.1 רמה AA.",
+      "accessibility_page_title": "הצהרת נגישות",
+      "contact_meta_description": "צור קשר - London Tour מספקת שירותי תיירות מקצועיים. מתמחה בסיור במגדל לונדון.",
+      "legal_accessibility_h1_1": "הצהרת נגישות",
+      "legal_accessibility_h2_2": "1. מדיניות נגישות",
+      "legal_accessibility_h2_3": "2. הסדרי נגישות באתר",
+      "legal_accessibility_h2_4": "3. טכנולוגיות עזר נתמכות",
+      "legal_accessibility_h2_5": "4. בדיקות נגישות",
+      "legal_accessibility_h2_6": "5. שיפורים מתמשכים",
+      "legal_accessibility_h2_7": "6. יצירת קשר ומשוב",
+      "legal_accessibility_h3_8": "תאימות WCAG 2.1",
+      "legal_accessibility_p_10": "אנו מאמינים בשוויון זכויות ובזכותו של כל אדם לקבל מידע ושירותים באופן עצמאי ושווה. אתר זה תוכנן ונבנה תוך דגש מיוחד על נגישות לאנשים עם מוגבלויות.",
+      "legal_accessibility_p_11": "האתר תואם ל-WCAG 2.1 רמה AA, הכולל:",
+      "legal_accessibility_p_12": "האתר נבדק באמצעות:",
+      "legal_accessibility_p_13": "אנו עובדים ברציפות לשיפור הנגישות של האתר שלנו ומעדכנים אותו בהתאם להתפתחויות טכנולוגיות ומשוב משתמשים.",
+      "legal_accessibility_p_14": "אם נתקלתם בבעיית נגישות באתר או זקוקים לסיוע, אנא צרו איתנו קשר:",
+      "legal_accessibility_p_15": "זמן תגובה: אנו מגיבים לפניות נגישות תוך 3 ימי עסקים ופועלים לפתרון בעיות תוך 10 ימי עסקים.",
+      "legal_privacy_page_title": "מדיניות פרטיות - [business_name]",
+      "privacy_meta_description": "מדיניות הפרטיות שלנו - כיצד אנו אוספים, משתמשים ומגנים על המידע שלך",
+      "legal_accessibility_li_19": "תמיכה בניווט מקלדת",
+      "legal_accessibility_li_20": "תאימות לקוראי מסך",
+      "legal_accessibility_li_21": "ניגודיות צבעים מתאימה",
+      "legal_accessibility_li_22": "גדלי גופן גמישים וניתנים להגדלה",
+      "legal_accessibility_li_23": "טקסט חלופי תיאורי לתמונות",
+      "legal_accessibility_li_24": "מבנה כותרות היררכי",
+      "legal_accessibility_li_25": "קישורים ברורים ותיאוריים",
+      "legal_accessibility_li_26": "תמיכה בזום של 200% ללא אובדן תוכן",
+      "legal_accessibility_li_27": "ניתן לתפיסה: מידע מוצג בדרכים שמשתמשים יכולים לתפוס",
+      "legal_accessibility_li_28": "ניתן להפעלה: רכיבי ממשק ניתנים להפעלה",
+      "legal_accessibility_li_29": "ניתן להבנה: מידע וממשק משתמש ניתנים להבנה",
+      "legal_accessibility_li_30": "חזק: תוכן ניתן לפרשנות על ידי מגוון טכנולוגיות",
+      "legal_accessibility_li_31": "NVDA (Windows)",
+      "legal_accessibility_li_32": "JAWS (Windows)",
+      "legal_accessibility_li_33": "VoiceOver (Mac/iOS)",
+      "legal_accessibility_li_34": "TalkBack (Android)",
+      "legal_accessibility_li_35": "Dragon NaturallySpeaking",
+      "legal_accessibility_li_36": "ניווט מתגים",
+      "legal_accessibility_li_37": "כלי בדיקת נגישות אוטומטיים",
+      "legal_accessibility_li_38": "בדיקה ידנית עם קוראי מסך",
+      "legal_accessibility_li_39": "ניווט במקלדת בלבד",
+      "legal_accessibility_li_40": "אימות ניגודיות צבעים",
+      "legal_accessibility_li_41": "בדיקה עם משתמשים עם מוגבלויות",
+      "legal_accessibility_li_42": "חברה: [business_name]",
+      "legal_accessibility_li_43": "אימייל: [business_email]",
+      "legal_accessibility_li_44": "טלפון: [business_phone]",
+      "legal_accessibility_link_16": "[business_email]",
+      "legal_accessibility_link_17": "[business_phone]",
+      "legal_accessibility_link_18": "← חזרה לאתר",
+      "accessibility_meta_description": "הצהרת הנגישות שלנו - המחויבות שלנו לנגישות דיגיטלית",
+      "legal_accessibility_page_title": "הצהרת נגישות - [business_name]"
+    }
+  }
+};
+  
+  // RTL languages
+  const rtlLanguages = ["he"];
+  
+  // Available languages
+  const availableLanguages = ["en","he"];
+  
+  // Language display info with SVG flag images for cross-platform compatibility
+  const languageInfo = {"en":{"name":"English","nativeName":"English","flag":"🇺🇸","flagIcon":"circle-flags:us","dir":"ltr","flagImg":"<img src=\"https://api.iconify.design/circle-flags/us.svg\" width=\"20\" height=\"20\" alt=\"\" style=\"display:inline-block;vertical-align:middle;border-radius:50%;\" />"},"he":{"name":"Hebrew","nativeName":"עברית","flag":"🇮🇱","flagIcon":"circle-flags:il","dir":"rtl","flagImg":"<img src=\"https://api.iconify.design/circle-flags/il.svg\" width=\"20\" height=\"20\" alt=\"\" style=\"display:inline-block;vertical-align:middle;border-radius:50%;\" />"}};
+  
+  // Detect stored language preference - only use stored value, not browser language
+  // This ensures the site respects its original design (e.g., RTL Hebrew site stays RTL by default)
+  function detectLanguage() {
+    const stored = localStorage.getItem('zappy_lang');
+    if (stored && availableLanguages.includes(stored)) return stored;
+    
+    // Always default to the site's default language, not browser language
+    // This prevents breaking the original site layout on first visit
+    return 'en';
+  }
+  
+  // Callbacks for language change events (e.g., e-commerce content refresh)
+  const languageChangeCallbacks = [];
+  
+  // Simple i18n implementation (no external dependency)
+  const zappyI18n = {
+    language: detectLanguage(),
+    resources: resources,
+    t: function(key) {
+      const langResources = this.resources[this.language];
+      if (langResources && langResources.translation && langResources.translation[key]) {
+        return langResources.translation[key];
+      }
+      // Fallback to default language
+      const fallbackResources = this.resources['en'];
+      if (fallbackResources && fallbackResources.translation && fallbackResources.translation[key]) {
+        return fallbackResources.translation[key];
+      }
+      return key;
+    },
+    changeLanguage: function(lang) {
+      if (!availableLanguages.includes(lang)) return Promise.resolve();
+      var oldLang = this.language;
+      this.language = lang;
+      localStorage.setItem('zappy_lang', lang);
+      updateContent();
+      updateDirection();
+      // Re-detect icon color after direction change (background may differ)
+      fixLanguageSwitcherColor();
+      // Also re-check after a short delay to ensure styles are applied
+      setTimeout(fixLanguageSwitcherColor, 100);
+      
+      // Call all registered language change callbacks (e.g., e-commerce content refresh)
+      languageChangeCallbacks.forEach(function(callback) {
+        try {
+          callback(lang, oldLang);
+        } catch (e) {
+          console.error('[i18n] Language change callback error:', e);
+        }
+      });
+      
+      return Promise.resolve();
+    },
+    getCurrentLanguage: function() { return this.language; },
+    getAvailableLanguages: function() { return availableLanguages; },
+    // Register a callback to be called when language changes
+    onLanguageChange: function(callback) {
+      if (typeof callback === 'function') {
+        languageChangeCallbacks.push(callback);
+      }
+    }
+  };
+  
+  // Update all translatable content
+  function updateContent() {
+    // Newline character for detection
+    var newlineChar = String.fromCharCode(10);
+    // HTML tag pattern for detection (common formatting tags)
+    var htmlTagPattern = /<(font|b|i|u|strong|em|span|br|a|sub|sup|mark|del|ins|s|small|big)[^>]*>/i;
+    
+    // Update text content - use innerHTML when text contains line breaks or HTML tags
+    document.querySelectorAll('[data-i18n]').forEach(function(el) {
+      var key = el.getAttribute('data-i18n');
+      var translation = zappyI18n.t(key);
+      if (translation && translation !== key) {
+        // Check if translation contains newlines or HTML formatting tags
+        var hasNewlines = translation.indexOf(newlineChar) !== -1;
+        var hasHtmlTags = htmlTagPattern.test(translation);
+        
+        if (hasNewlines || hasHtmlTags) {
+          // Convert newlines to <br> and use innerHTML to preserve HTML formatting
+          el.innerHTML = translation.split(newlineChar).join('<br>');
+        } else {
+          // No HTML content, use textContent for safety
+          el.textContent = translation;
+        }
+      }
+    });
+    
+    // Update placeholders
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(function(el) {
+      const key = el.getAttribute('data-i18n-placeholder');
+      const translation = zappyI18n.t(key);
+      if (translation && translation !== key) {
+        el.setAttribute('placeholder', translation);
+      }
+    });
+    
+    // Update alt attributes
+    document.querySelectorAll('[data-i18n-alt]').forEach(function(el) {
+      const key = el.getAttribute('data-i18n-alt');
+      const translation = zappyI18n.t(key);
+      if (translation && translation !== key) {
+        el.setAttribute('alt', translation);
+      }
+    });
+    
+    // Update title attributes
+    document.querySelectorAll('[data-i18n-title]').forEach(function(el) {
+      const key = el.getAttribute('data-i18n-title');
+      const translation = zappyI18n.t(key);
+      if (translation && translation !== key) {
+        el.setAttribute('title', translation);
+      }
+    });
+    
+    // Update meta description
+    document.querySelectorAll('[data-i18n-content]').forEach(function(el) {
+      const key = el.getAttribute('data-i18n-content');
+      const translation = zappyI18n.t(key);
+      if (translation && translation !== key) {
+        el.setAttribute('content', translation);
+      }
+    });
+    
+    // Update page title
+    const titleEl = document.querySelector('title[data-i18n]');
+    if (titleEl) {
+      const key = titleEl.getAttribute('data-i18n');
+      const translation = zappyI18n.t(key);
+      if (translation && translation !== key) {
+        document.title = translation;
+      }
+    }
+  }
+  
+  // Update document direction based on language
+  function updateDirection() {
+    const currentLang = zappyI18n.language;
+    const isRTL = rtlLanguages.includes(currentLang);
+    const html = document.documentElement;
+    const body = document.body;
+    const newDir = isRTL ? 'rtl' : 'ltr';
+    
+    // Update html element - only direction, NOT text-align (preserve centered elements)
+    html.setAttribute('lang', currentLang);
+    html.setAttribute('dir', newDir);
+    html.style.direction = newDir;
+    
+    // Update body element - only direction
+    if (body) {
+      body.setAttribute('dir', newDir);
+      body.style.direction = newDir;
+    }
+    
+    // Update major content containers - only direction, NOT text-align
+    // This preserves centered hero sections, titles, etc.
+    document.querySelectorAll('main, article, section, .content, .container, .wrapper').forEach(function(el) {
+      el.style.direction = newDir;
+      // Do NOT set text-align - preserve original alignment (center, left, right)
+    });
+    
+    // ONLY apply text-align to legal page content
+    document.querySelectorAll('.legal-content, .terms-content, .privacy-content').forEach(function(el) {
+      el.style.direction = newDir;
+      el.style.textAlign = isRTL ? 'right' : 'left';
+    });
+    
+    // Update catalog menu RTL class to match current direction
+    // This is critical for e-commerce sites with category navigation
+    document.querySelectorAll('.zappy-catalog-menu').forEach(function(el) {
+      if (isRTL) {
+        el.classList.add('rtl');
+        el.setAttribute('dir', 'rtl');
+      } else {
+        el.classList.remove('rtl');
+        el.removeAttribute('dir');
+      }
+    });
+    
+    // IMPORTANT: Do NOT set direction on navigation flex containers!
+    // V2 sites have layouts designed for a specific direction.
+    // Changing inline direction on flex containers reverses the item order, breaking layouts.
+    // Instead, we rely on the dir attribute on <html> for text direction,
+    // and let the original CSS handle navigation layout.
+    
+    // Remove dir ATTRIBUTE from nav elements - they should inherit from <html>
+    // V2 sites may have hardcoded dir="rtl" on nav elements which needs to be removed
+    document.querySelectorAll('header, nav, .navbar, .nav-container, .header-container, .nav-links, .menu, nav ul, header ul, #navMenu').forEach(function(el) {
+      // Remove dir attribute so element inherits from <html>
+      el.removeAttribute('dir');
+      // Remove all layout-affecting inline styles - let original CSS take over
+      el.style.removeProperty('direction');
+      el.style.removeProperty('flex-direction');
+      el.style.removeProperty('justify-content');
+      el.style.removeProperty('margin-left');
+      el.style.removeProperty('margin-right');
+    });
+    
+    // SPECIAL HANDLING for nav elements
+    document.querySelectorAll('.nav-menu, #navMenu, .nav-right-group').forEach(function(el) {
+      el.removeAttribute('dir');
+      el.style.removeProperty('direction');
+      el.style.removeProperty('flex-direction');
+      el.style.removeProperty('justify-content');
+      if (isRTL) {
+        el.style.removeProperty('margin-left');
+        el.style.removeProperty('margin-right');
+      } else {
+        // In LTR: override CSS margin-left:auto with 0 for nav-menu elements
+        el.style.setProperty('margin-left', '0', 'important');
+        el.style.removeProperty('margin-right');
+      }
+    });
+    
+    // CRITICAL FIX FOR V2 SITES: Move lang-switcher INSIDE nav-cta-container
+    // V2 sites use margin-left:auto on nav-cta-container to push it right.
+    // If lang-switcher is a sibling, it gets left behind. Moving it inside keeps them grouped.
+    document.querySelectorAll('.lang-switcher').forEach(function(el) {
+      var ctaContainer = el.parentElement ? el.parentElement.querySelector('.nav-cta-container') : null;
+      if (ctaContainer && el.parentElement === ctaContainer.parentElement) {
+        // Move lang-switcher as first child of CTA container
+        ctaContainer.insertBefore(el, ctaContainer.firstChild);
+      }
+      // Clear any margin overrides
+      el.style.removeProperty('margin-left');
+      el.style.removeProperty('margin-right');
+    });
+    
+    // CRITICAL FIX FOR E-COMMERCE SITES: Move lang-switcher inside nav-icons-left
+    // E-commerce sites have a nav-icons-left container with search box.
+    // For RTL: lang-switcher should appear to the RIGHT of search box
+    // For LTR: lang-switcher should appear to the LEFT of search box
+    document.querySelectorAll('.lang-switcher').forEach(function(el) {
+      var navIconsLeft = document.querySelector('.nav-icons-left');
+      var searchBox = document.querySelector('.nav-search-box');
+      
+      // Only move if not already inside nav-icons-left and the elements exist
+      if (navIconsLeft && searchBox && !el.closest('.nav-icons-left')) {
+        // Insert before search box - in RTL this visually appears to the RIGHT
+        navIconsLeft.insertBefore(el, searchBox);
+      }
+    });
+    
+    // Remove any previously set margins on nav links and logo
+    document.querySelectorAll('header > a, nav > a, .nav-menu > a, .nav-links > a, nav ul li, header ul li, .logo, .site-logo, .brand, .navbar-brand, .nav-brand').forEach(function(el) {
+      el.style.removeProperty('margin-left');
+      el.style.removeProperty('margin-right');
+    });
+    
+    // NOTE: Removed old code that set margin-left:auto on .lang-switcher
+    // This conflicted with V2 layouts. The margin handling is now done in the 
+    // special handling section above that sets margin-left:0 in LTR mode.
+    
+    // CTA buttons - remove any inline margin styles to let CSS handle positioning
+    document.querySelectorAll('header .btn, header .button, header .cta, nav .btn, nav .button, .navbar .btn, .nav-cta-container, .cta-container, .header-cta, .nav-cta').forEach(function(el) {
+      el.style.removeProperty('margin-left');
+      el.style.removeProperty('margin-right');
+    });
+    
+    // Globe icon SVG for language switcher button (minimal design, no chevron)
+    // Read the icon color from the data attribute (set by server based on navbar color detection)
+    var langSwitcher = document.querySelector('.lang-switcher');
+    var iconColor = langSwitcher ? langSwitcher.getAttribute('data-icon-color') : 'currentColor';
+    if (!iconColor) iconColor = 'currentColor';
+    
+    var globeIconSvg = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="' + iconColor + '" style="flex-shrink:0;"><path d="M12.039,.002s0,0,0,0c-.013,0-.026-.002-.039-.002-.005,0-.009,0-.014,0-.002,0-.003,0-.005,0C5.373,.011,0,5.39,0,12s5.383,12,12,12,12-5.383,12-12S18.638,.023,12.039,.002Zm9.747,6.998h-4.814c-1.067-2.669-2.712-4.781-3.731-5.925,3.734,.421,6.901,2.719,8.546,5.925Zm-4.786,5c0,1.407-.292,2.753-.731,4H7.731c-.439-1.247-.731-2.593-.731-4s.292-2.754,.73-4h8.539c.439,1.247,.731,2.593,.731,4Zm-1.122,5c-1.229,2.838-3.116,4.99-3.878,5.788-.762-.798-2.649-2.95-3.878-5.788h7.755ZM8.121,7c1.229-2.841,3.117-4.992,3.879-5.789,.762,.798,2.649,2.95,3.878,5.789h-7.757ZM10.757,1.075c-1.025,1.15-2.668,3.264-3.73,5.925H2.214C3.859,3.795,7.024,1.498,10.757,1.075ZM1.764,8H6.668c-.403,1.247-.668,2.589-.668,4s.265,2.752,.669,4H1.764c-.487-1.242-.764-2.588-.764-4s.277-2.758,.764-4Zm.45,9H7.029c1.067,2.669,2.712,4.781,3.731,5.925-3.734-.421-6.901-2.719-8.546-5.925Zm11.026,5.925c1.019-1.144,2.664-3.257,3.731-5.925h4.814c-1.645,3.206-4.812,5.504-8.546,5.925Zm8.996-6.925h-4.905c.404-1.248,.669-2.589,.669-4s-.265-2.752-.669-4h4.905c.487,1.242,.764,2.588,.764,4s-.277,2.758-.764,4Z"/></svg>';
+    
+    // Update language switcher display - just the globe icon, no arrow
+    var currentLangEl = document.querySelector('.lang-switcher-current');
+    if (currentLangEl) {
+      currentLangEl.innerHTML = globeIconSvg;
+    }
+    
+    // Update dropdown options (show all except current)
+    document.querySelectorAll('.lang-switcher-dropdown').forEach(function(dropdown) {
+      dropdown.innerHTML = availableLanguages
+        .filter(function(lang) { return lang !== currentLang; })
+        .map(function(lang) {
+          const info = languageInfo[lang] || { flag: '🌐', flagImg: '🌐', nativeName: lang };
+          // Use flagImg (SVG) for cross-platform compatibility, fallback to emoji flag
+          return '<button class="lang-option" data-lang="' + lang + '" style="display:flex;align-items:center;gap:8px;width:100%;padding:10px 14px;background:none;border:none;text-align:left;cursor:pointer;font-size:14px;color:#333;">' + (info.flagImg || info.flag) + ' ' + info.nativeName + '</button>';
+        })
+        .join('');
+      
+      // Re-attach event listeners
+      dropdown.querySelectorAll('.lang-option').forEach(function(option) {
+        option.addEventListener('click', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          const lang = this.getAttribute('data-lang');
+          zappyI18n.changeLanguage(lang);
+          dropdown.style.opacity = '0';
+          dropdown.style.visibility = 'hidden';
+          dropdown.style.transform = 'translateY(-8px)';
+        });
+      });
+    });
+    
+    // FIX: Update mobile button positions when language/direction changes
+    // CSS handles positioning based on html[dir] attribute.
+    // We just need to remove any inline left/right styles so CSS can take over.
+    if (window.innerWidth < 768) {
+      var mobileToggle = document.querySelector('.mobile-toggle');
+      var phoneBtn = document.querySelector('.phone-header-btn');
+      var navCtaContainer = document.querySelector('.nav-cta-container');
+      
+      // Remove inline left/right - CSS will position based on html[dir]
+      if (mobileToggle) {
+        mobileToggle.style.removeProperty('left');
+        mobileToggle.style.removeProperty('right');
+        console.log('[i18n] Cleared mobile toggle inline position - CSS will handle based on dir:', newDir);
+      }
+      
+      if (phoneBtn) {
+        phoneBtn.style.removeProperty('left');
+        phoneBtn.style.removeProperty('right');
+        console.log('[i18n] Cleared phone button inline position - CSS will handle based on dir:', newDir);
+      }
+      
+      if (navCtaContainer) {
+        navCtaContainer.style.removeProperty('left');
+        navCtaContainer.style.removeProperty('right');
+        console.log('[i18n] Cleared nav-cta-container inline position - CSS will handle based on dir:', newDir);
+      }
+    }
+    
+    // Update mobile language submenu in hamburger
+    updateMobileLangMenu();
+  }
+  
+  // Initialize language switcher dropdown
+  function initLanguageSwitcher() {
+    const switchers = document.querySelectorAll('.lang-switcher');
+    if (!switchers.length) return;
+    
+    switchers.forEach(function(switcher) {
+      const dropdown = switcher.querySelector('.lang-switcher-dropdown');
+      const current = switcher.querySelector('.lang-switcher-current');
+      
+      if (!current || !dropdown) return;
+      
+      // Ensure dropdown is hidden initially (inline style fallback)
+      dropdown.style.opacity = '0';
+      dropdown.style.visibility = 'hidden';
+      dropdown.style.transform = 'translateY(-8px)';
+      
+      // Toggle dropdown with inline styles
+      current.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        const isOpen = dropdown.style.opacity === '1';
+        if (isOpen) {
+          dropdown.style.opacity = '0';
+          dropdown.style.visibility = 'hidden';
+          dropdown.style.transform = 'translateY(-8px)';
+        } else {
+          dropdown.style.opacity = '1';
+          dropdown.style.visibility = 'visible';
+          dropdown.style.transform = 'translateY(0)';
+        }
+      });
+      
+      // Handle language selection
+      dropdown.querySelectorAll('.lang-option').forEach(function(option) {
+        option.addEventListener('click', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          const lang = this.getAttribute('data-lang');
+          zappyI18n.changeLanguage(lang);
+          dropdown.style.opacity = '0';
+          dropdown.style.visibility = 'hidden';
+          dropdown.style.transform = 'translateY(-8px)';
+        });
+      });
+    });
+    
+    // Close dropdown when clicking outside
+    document.addEventListener('click', function() {
+      document.querySelectorAll('.lang-switcher-dropdown').forEach(function(dropdown) {
+        dropdown.style.opacity = '0';
+        dropdown.style.visibility = 'hidden';
+        dropdown.style.transform = 'translateY(-8px)';
+      });
+    });
+  }
+  
+  // ==============================================
+  // MOBILE LANGUAGE SUBMENU (inside hamburger menu)
+  // ==============================================
+  
+  // Create mobile language menu inside hamburger
+  function injectMobileLangCss() {
+    if (document.getElementById('mobile-lang-menu-css')) return;
+    var style = document.createElement('style');
+    style.id = 'mobile-lang-menu-css';
+    style.textContent = '@media (max-width: 768px) {' +
+      '.lang-switcher, .nav-cta-container .lang-switcher, .nav-container .lang-switcher,' +
+      '.navbar .lang-switcher, .navbar .nav-cta-container .lang-switcher,' +
+      '.nav-icons-left .lang-switcher, .nav-ecommerce-icons .lang-switcher { display: none !important; }' +
+      '.zappy-lang-switcher-container { display: none !important; }' +
+      '.mobile-lang-menu { list-style: none !important; width: 100%; border-top: 1px solid rgba(128,128,128,0.2); margin-top: 8px; padding-top: 8px; }' +
+      '.mobile-lang-toggle { display: flex; align-items: center; gap: 10px; width: 100%; padding: 12px 16px; background: none; border: none; cursor: pointer; color: inherit; font-size: 15px; font-family: inherit; }' +
+      '.mobile-lang-toggle span { flex: 1; }' +
+      'html[dir="rtl"] .mobile-lang-toggle span, html[lang="he"] .mobile-lang-toggle span, html[lang="ar"] .mobile-lang-toggle span { text-align: right; }' +
+      'html:not([dir="rtl"]) .mobile-lang-toggle span { text-align: left; }' +
+      '.mobile-lang-chevron { transition: transform 0.3s ease; flex-shrink: 0; }' +
+      '.mobile-lang-options { display: none; flex-direction: column; padding: 0 16px 8px 46px; }' +
+      'html[dir="rtl"] .mobile-lang-options, html[lang="he"] .mobile-lang-options, html[lang="ar"] .mobile-lang-options { padding: 0 46px 8px 16px; }' +
+      '.mobile-lang-options.open { display: flex; }' +
+      '.mobile-lang-option { display: flex; align-items: center; gap: 8px; padding: 10px 12px; background: none; border: none; cursor: pointer; color: inherit; font-size: 14px; font-family: inherit; border-radius: 6px; transition: background-color 0.2s; width: 100%; }' +
+      'html[dir="rtl"] .mobile-lang-option, html[lang="he"] .mobile-lang-option, html[lang="ar"] .mobile-lang-option { text-align: right; }' +
+      'html:not([dir="rtl"]) .mobile-lang-option { text-align: left; }' +
+      '.mobile-lang-option:hover { background: rgba(128,128,128,0.1); }' +
+      '.mobile-lang-option img { width: 20px; height: 20px; border-radius: 50%; display: inline-block; vertical-align: middle; }' +
+      '}';
+    document.head.appendChild(style);
+  }
+
+  function createMobileLangMenu() {
+    if (window.innerWidth > 768) return;
+    if (document.querySelector('.mobile-lang-menu')) return;
+    if (availableLanguages.length < 2) return;
+    
+    injectMobileLangCss();
+    
+    var navMenu = document.getElementById('navMenu') || document.querySelector('.nav-menu');
+    if (!navMenu) return;
+    
+    var currentLang = zappyI18n.language;
+    var currentInfo = languageInfo[currentLang] || { nativeName: currentLang, flagImg: '' };
+    
+    var langSwitcher = document.querySelector('.lang-switcher');
+    var iconColor = langSwitcher ? langSwitcher.getAttribute('data-icon-color') : 'currentColor';
+    if (!iconColor) iconColor = 'currentColor';
+    
+    var optionsHtml = availableLanguages
+      .filter(function(lang) { return lang !== currentLang; })
+      .map(function(lang) {
+        var info = languageInfo[lang] || { nativeName: lang, flagImg: '' };
+        return '<button class="mobile-lang-option" data-lang="' + lang + '">' +
+          (info.flagImg || info.flag || '') + ' ' + info.nativeName + '</button>';
+      })
+      .join('');
+    
+    var li = document.createElement('li');
+    li.className = 'mobile-lang-menu';
+    li.innerHTML =
+      '<button class="mobile-lang-toggle" type="button">' +
+        '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="' + iconColor + '" style="flex-shrink:0;"><path d="M12.039,.002s0,0,0,0c-.013,0-.026-.002-.039-.002-.005,0-.009,0-.014,0-.002,0-.003,0-.005,0C5.373,.011,0,5.39,0,12s5.383,12,12,12,12-5.383,12-12S18.638,.023,12.039,.002Zm9.747,6.998h-4.814c-1.067-2.669-2.712-4.781-3.731-5.925,3.734,.421,6.901,2.719,8.546,5.925Zm-4.786,5c0,1.407-.292,2.753-.731,4H7.731c-.439-1.247-.731-2.593-.731-4s.292-2.754,.73-4h8.539c.439,1.247,.731,2.593,.731,4Zm-1.122,5c-1.229,2.838-3.116,4.99-3.878,5.788-.762-.798-2.649-2.95-3.878-5.788h7.755ZM8.121,7c1.229-2.841,3.117-4.992,3.879-5.789,.762,.798,2.649,2.95,3.878,5.789h-7.757ZM10.757,1.075c-1.025,1.15-2.668,3.264-3.73,5.925H2.214C3.859,3.795,7.024,1.498,10.757,1.075ZM1.764,8H6.668c-.403,1.247-.668,2.589-.668,4s.265,2.752,.669,4H1.764c-.487-1.242-.764-2.588-.764-4s.277-2.758,.764-4Zm.45,9H7.029c1.067,2.669,2.712,4.781,3.731,5.925-3.734-.421,6.901-2.719-8.546-5.925Zm11.026,5.925c1.019-1.144,2.664-3.257,3.731-5.925h4.814c-1.645,3.206-4.812,5.504-8.546,5.925Zm8.996-6.925h-4.905c.404-1.248,.669-2.589,.669-4s-.265-2.752-.669-4h4.905c.487,1.242,.764,2.588,.764,4s-.277,2.758-.764,4Z"/></svg>' +
+        '<span>' + currentInfo.nativeName + '</span>' +
+        '<svg class="mobile-lang-chevron" width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 4 6 8 10 4"></polyline></svg>' +
+      '</button>' +
+      '<div class="mobile-lang-options">' + optionsHtml + '</div>';
+    
+    navMenu.appendChild(li);
+    
+    // Match nav link color for visual consistency
+    var firstNavLink = navMenu.querySelector('li:not(.mobile-lang-menu) > a');
+    if (firstNavLink) {
+      var navLinkColor = window.getComputedStyle(firstNavLink).color;
+      if (navLinkColor && navLinkColor !== 'rgba(0, 0, 0, 0)') {
+        li.style.color = navLinkColor;
+        // Update globe SVG fill to match nav link color
+        var globeSvg = li.querySelector('.mobile-lang-toggle > svg:first-child');
+        if (globeSvg) globeSvg.setAttribute('fill', navLinkColor);
+      }
+    }
+    
+    console.log('[i18n] Mobile language submenu created in hamburger menu');
+  }
+  
+  // Wire up mobile language submenu event handlers
+  function initMobileLangSwitcher() {
+    var toggle = document.querySelector('.mobile-lang-toggle');
+    var options = document.querySelector('.mobile-lang-options');
+    if (!toggle || !options) return;
+    
+    var newToggle = toggle.cloneNode(true);
+    toggle.parentNode.replaceChild(newToggle, toggle);
+    var optionsEl = newToggle.parentNode.querySelector('.mobile-lang-options');
+    
+    newToggle.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      var isOpen = optionsEl.classList.contains('open');
+      if (isOpen) {
+        optionsEl.classList.remove('open');
+        optionsEl.style.display = 'none';
+      } else {
+        optionsEl.classList.add('open');
+        optionsEl.style.display = 'flex';
+      }
+      var chevron = newToggle.querySelector('.mobile-lang-chevron');
+      if (chevron) chevron.style.transform = isOpen ? '' : 'rotate(180deg)';
+    });
+    
+    optionsEl.querySelectorAll('.mobile-lang-option').forEach(function(option) {
+      option.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var lang = this.getAttribute('data-lang');
+        zappyI18n.changeLanguage(lang);
+        optionsEl.classList.remove('open');
+        optionsEl.style.display = 'none';
+        var chevron = newToggle.querySelector('.mobile-lang-chevron');
+        if (chevron) chevron.style.transform = '';
+        var navMenu = document.getElementById('navMenu') || document.querySelector('.nav-menu');
+        if (navMenu) navMenu.classList.remove('active');
+        var hamburgerIcon = document.querySelector('.hamburger-icon');
+        var closeIcon = document.querySelector('.close-icon');
+        if (hamburgerIcon) hamburgerIcon.style.setProperty('display', 'block', 'important');
+        if (closeIcon) closeIcon.style.setProperty('display', 'none', 'important');
+        document.body.style.overflow = '';
+      });
+    });
+  }
+  
+  // Update mobile language menu after language change
+  function updateMobileLangMenu() {
+    var menuItem = document.querySelector('.mobile-lang-menu');
+    if (!menuItem) {
+      createMobileLangMenu();
+      initMobileLangSwitcher();
+      return;
+    }
+    
+    var currentLang = zappyI18n.language;
+    var currentInfo = languageInfo[currentLang] || { nativeName: currentLang };
+    
+    var toggleSpan = menuItem.querySelector('.mobile-lang-toggle span');
+    if (toggleSpan) toggleSpan.textContent = currentInfo.nativeName;
+    
+    var optionsContainer = menuItem.querySelector('.mobile-lang-options');
+    if (!optionsContainer) return;
+    
+    optionsContainer.innerHTML = availableLanguages
+      .filter(function(lang) { return lang !== currentLang; })
+      .map(function(lang) {
+        var info = languageInfo[lang] || { nativeName: lang, flagImg: '' };
+        return '<button class="mobile-lang-option" data-lang="' + lang + '">' +
+          (info.flagImg || info.flag || '') + ' ' + info.nativeName + '</button>';
+      })
+      .join('');
+    
+    optionsContainer.querySelectorAll('.mobile-lang-option').forEach(function(option) {
+      option.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var lang = this.getAttribute('data-lang');
+        zappyI18n.changeLanguage(lang);
+        optionsContainer.classList.remove('open');
+        optionsContainer.style.display = 'none';
+        var chevron = menuItem.querySelector('.mobile-lang-chevron');
+        if (chevron) chevron.style.transform = '';
+        var navMenu = document.getElementById('navMenu') || document.querySelector('.nav-menu');
+        if (navMenu) navMenu.classList.remove('active');
+        var hamburgerIcon = document.querySelector('.hamburger-icon');
+        var closeIcon = document.querySelector('.close-icon');
+        if (hamburgerIcon) hamburgerIcon.style.setProperty('display', 'block', 'important');
+        if (closeIcon) closeIcon.style.setProperty('display', 'none', 'important');
+        document.body.style.overflow = '';
+      });
+    });
+    
+    optionsContainer.classList.remove('open');
+    optionsContainer.style.display = 'none';
+  }
+  
+  // Fix mobile menu inline styles that may have been incorrectly persisted
+  // This is needed because inline styles override CSS media queries
+  function fixMobileMenuStyles() {
+    // Only run on mobile
+    if (window.innerWidth >= 768) return;
+    
+    // Remove inline flex-direction from nav menus so CSS can take over
+    document.querySelectorAll('.nav-menu, #navMenu, nav ul, header ul').forEach(function(el) {
+      if (el.style.flexDirection) {
+        el.style.removeProperty('flex-direction');
+      }
+    });
+  }
+  
+  // Fix mobile button positioning based on current page direction
+  // Clear any inline left/right styles so CSS can take over based on html[dir]
+  function fixMobileButtonPositioning() {
+    // Only run on mobile
+    if (window.innerWidth >= 768) return;
+    
+    var mobileToggle = document.querySelector('.mobile-toggle');
+    var phoneBtn = document.querySelector('.phone-header-btn');
+    var navCtaContainer = document.querySelector('.nav-cta-container');
+    
+    // Clear inline left/right - CSS will position based on html[dir]
+    if (mobileToggle) {
+      mobileToggle.style.removeProperty('left');
+      mobileToggle.style.removeProperty('right');
+    }
+    
+    if (phoneBtn) {
+      phoneBtn.style.removeProperty('left');
+      phoneBtn.style.removeProperty('right');
+    }
+    
+    if (navCtaContainer) {
+      navCtaContainer.style.removeProperty('left');
+      navCtaContainer.style.removeProperty('right');
+    }
+    
+    console.log('[i18n] Cleared inline button positions - CSS handles based on html[dir]:', document.documentElement.dir);
+  }
+  
+  // ============================================
+  // LANGUAGE SWITCHER ICON COLOR DETECTION
+  // Dynamically detect if navbar has light/dark background
+  // and set the globe icon color accordingly
+  // ============================================
+  function fixLanguageSwitcherColor() {
+    var switcher = document.querySelector('.lang-switcher-current');
+    var svg = switcher ? switcher.querySelector('svg') : null;
+    if (!switcher || !svg) return;
+    
+    // Find the navbar or header element
+    var navbar = document.querySelector('.navbar') || 
+                 document.querySelector('nav') || 
+                 document.querySelector('header');
+    if (!navbar) return;
+    
+    // Get the effective background color by walking up the DOM tree
+    function getEffectiveBackgroundColor(element) {
+      var el = element;
+      var maxDepth = 10; // Prevent infinite loops
+      
+      while (el && maxDepth > 0) {
+        var style = window.getComputedStyle(el);
+        var bg = style.backgroundColor;
+        
+        // Skip transparent backgrounds
+        if (bg && bg !== 'transparent' && bg !== 'rgba(0, 0, 0, 0)') {
+          return bg;
+        }
+        
+        // Check background-image for gradients
+        var bgImage = style.backgroundImage;
+        if (bgImage && bgImage !== 'none') {
+          // Extract first color from gradient
+          var gradientMatch = bgImage.match(/rgba?\([^)]+\)|#[a-fA-F0-9]{3,8}/);
+          if (gradientMatch) {
+            return gradientMatch[0];
+          }
+        }
+        
+        el = el.parentElement;
+        maxDepth--;
+      }
+      
+      // Default to white if no background found (assume light)
+      return 'rgb(255, 255, 255)';
+    }
+    
+    // Parse color string to RGB values
+    function parseColor(colorStr) {
+      if (!colorStr) return null;
+      
+      // Handle rgb/rgba
+      var rgbMatch = colorStr.match(/rgba?\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)/);
+      if (rgbMatch) {
+        return {
+          r: parseInt(rgbMatch[1], 10),
+          g: parseInt(rgbMatch[2], 10),
+          b: parseInt(rgbMatch[3], 10)
+        };
+      }
+      
+      // Handle hex
+      var hexMatch = colorStr.match(/#([a-fA-F0-9]{2})([a-fA-F0-9]{2})([a-fA-F0-9]{2})/);
+      if (hexMatch) {
+        return {
+          r: parseInt(hexMatch[1], 16),
+          g: parseInt(hexMatch[2], 16),
+          b: parseInt(hexMatch[3], 16)
+        };
+      }
+      
+      // Handle 3-digit hex
+      var hex3Match = colorStr.match(/#([a-fA-F0-9])([a-fA-F0-9])([a-fA-F0-9])$/);
+      if (hex3Match) {
+        return {
+          r: parseInt(hex3Match[1] + hex3Match[1], 16),
+          g: parseInt(hex3Match[2] + hex3Match[2], 16),
+          b: parseInt(hex3Match[3] + hex3Match[3], 16)
+        };
+      }
+      
+      return null;
+    }
+    
+    // Calculate relative luminance (WCAG formula)
+    function getLuminance(rgb) {
+      if (!rgb) return 0.5; // Default to middle
+      
+      var r = rgb.r / 255;
+      var g = rgb.g / 255;
+      var b = rgb.b / 255;
+      
+      // Apply gamma correction
+      r = r <= 0.03928 ? r / 12.92 : Math.pow((r + 0.055) / 1.055, 2.4);
+      g = g <= 0.03928 ? g / 12.92 : Math.pow((g + 0.055) / 1.055, 2.4);
+      b = b <= 0.03928 ? b / 12.92 : Math.pow((b + 0.055) / 1.055, 2.4);
+      
+      return 0.2126 * r + 0.7152 * g + 0.0722 * b;
+    }
+    
+    // Get the effective background color
+    var bgColor = getEffectiveBackgroundColor(navbar);
+    var rgb = parseColor(bgColor);
+    var luminance = getLuminance(rgb);
+    
+    // Threshold: 0.5 is middle, lower = darker background
+    // Use 0.4 as threshold for better contrast
+    var isLightBackground = luminance > 0.4;
+    
+    // Set icon color based on background
+    // Light background = dark icon (#1a1a1a)
+    // Dark background = light icon (#F3FAFF)
+    var iconColor = isLightBackground ? '#1a1a1a' : '#F3FAFF';
+    
+    svg.style.fill = iconColor;
+    switcher.style.color = iconColor;
+    
+    console.log('[i18n] Language switcher icon color:', iconColor, 
+                '(bg luminance:', luminance.toFixed(2), 
+                ', isLight:', isLightBackground, ')');
+  }
+  
+  // Initialize on DOM ready
+  function init() {
+    updateContent();
+    updateDirection();
+    initLanguageSwitcher();
+    createMobileLangMenu();
+    initMobileLangSwitcher();
+    fixMobileMenuStyles();
+    fixMobileButtonPositioning();
+    fixLanguageSwitcherColor();
+    
+    // Also fix on resize (in case user rotates device)
+    window.addEventListener('resize', function() {
+      if (window.innerWidth > 768) {
+        // Desktop: remove mobile lang menu if it exists
+        var mobileLangEl = document.querySelector('.mobile-lang-menu');
+        if (mobileLangEl) mobileLangEl.remove();
+        var mobileCssEl = document.getElementById('mobile-lang-menu-css');
+        if (mobileCssEl) mobileCssEl.remove();
+      } else {
+        createMobileLangMenu();
+        initMobileLangSwitcher();
+      }
+      fixMobileMenuStyles();
+      fixMobileButtonPositioning();
+      fixLanguageSwitcherColor();
+    });
+    
+    // Re-check color after a delay to catch dynamically loaded backgrounds
+    setTimeout(fixLanguageSwitcherColor, 500);
+    setTimeout(fixLanguageSwitcherColor, 1500);
+  }
+  
+  // Expose to global scope
+  window.zappyI18n = zappyI18n;
+  
+  // Run initialization
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+</script>
+
     <script id="zappy-mobile-submenu-script">
     (function() {
       function initMobileSubmenuToggles() {
@@ -1164,6 +3937,76 @@
           observer.observe(menu, { attributes: true, attributeFilter: ['class', 'style'] });
         });
       }, 500);
+    })();
+    </script>
+
+    <script id="zappy-mobile-lang-menu-script">
+    (function() {
+      function initMobileLangMenu() {
+        if (window.innerWidth > 768) {
+          var existingMenu = document.querySelector('.mobile-lang-menu');
+          if (existingMenu) existingMenu.remove();
+          return;
+        }
+        if (document.querySelector('.mobile-lang-menu')) return;
+        var switcher = document.querySelector('.lang-switcher');
+        if (!switcher) return;
+        var dropdown = switcher.querySelector('.lang-switcher-dropdown');
+        if (!dropdown) return;
+        var options = dropdown.querySelectorAll('.lang-option');
+        if (options.length === 0) return;
+        var navMenu = document.getElementById('navMenu') || document.querySelector('.nav-menu') || document.querySelector('nav ul');
+        if (!navMenu) return;
+        var currentLang = document.documentElement.lang || 'en';
+        var langConfigs = {
+          he: {name:'עברית',flag:'https://api.iconify.design/circle-flags/il.svg'},
+          en: {name:'English',flag:'https://api.iconify.design/circle-flags/us.svg'},
+          ar: {name:'العربية',flag:'https://api.iconify.design/circle-flags/sa.svg'},
+          fr: {name:'Français',flag:'https://api.iconify.design/circle-flags/fr.svg'},
+          es: {name:'Español',flag:'https://api.iconify.design/circle-flags/es.svg'},
+          de: {name:'Deutsch',flag:'https://api.iconify.design/circle-flags/de.svg'},
+          ru: {name:'Русский',flag:'https://api.iconify.design/circle-flags/ru.svg'},
+          zh: {name:'中文',flag:'https://api.iconify.design/circle-flags/cn.svg'},
+          ja: {name:'日本語',flag:'https://api.iconify.design/circle-flags/jp.svg'},
+          pt: {name:'Português',flag:'https://api.iconify.design/circle-flags/br.svg'},
+          it: {name:'Italiano',flag:'https://api.iconify.design/circle-flags/it.svg'},
+          ko: {name:'한국어',flag:'https://api.iconify.design/circle-flags/kr.svg'}
+        };
+        var container = document.createElement('div');
+        container.className = 'mobile-lang-menu';
+        var currentConfig = langConfigs[currentLang] || {name:currentLang,flag:''};
+        var toggleBtn = document.createElement('button');
+        toggleBtn.className = 'mobile-lang-toggle';
+        toggleBtn.type = 'button';
+        var currentFlagHtml = currentConfig.flag ? '<img src="' + currentConfig.flag + '" width="20" height="20" alt="" style="border-radius:50%;margin-right:8px;margin-left:8px;">' : '';
+        toggleBtn.innerHTML = currentFlagHtml + currentConfig.name;
+        container.appendChild(toggleBtn);
+        var optionsDiv = document.createElement('div');
+        optionsDiv.className = 'mobile-lang-options';
+        var currentLink = document.createElement('a');
+        currentLink.className = 'mobile-lang-option active';
+        currentLink.href = '#';
+        currentLink.innerHTML = currentFlagHtml + currentConfig.name;
+        optionsDiv.appendChild(currentLink);
+        options.forEach(function(opt) {
+          var link = document.createElement('a');
+          link.className = 'mobile-lang-option';
+          link.href = opt.getAttribute('href');
+          link.innerHTML = opt.innerHTML;
+          optionsDiv.appendChild(link);
+        });
+        container.appendChild(optionsDiv);
+        navMenu.appendChild(container);
+        toggleBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          toggleBtn.classList.toggle('expanded');
+          optionsDiv.classList.toggle('expanded');
+        });
+      }
+      if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', initMobileLangMenu); }
+      else { initMobileLangMenu(); }
+      window.addEventListener('resize', function() { clearTimeout(window._mlrt); window._mlrt = setTimeout(initMobileLangMenu, 250); });
     })();
     </script>
 </body></html>

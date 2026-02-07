@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://london-tour-08e8a6de.zappy5.app/sitemap.xml
+Sitemap: https://example.com/sitemap.xml
